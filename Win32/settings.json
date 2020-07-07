@@ -1,0 +1,17 @@
+{
+    "Settings":{
+        "BG-Color":{
+            "Daylight":1,
+            "Color":"black"
+        },
+        "BG-Margin":0,
+        "BG-Font":"C:\\Windows\\Fonts\\MSYH.TTC",
+        "Resolution":{
+            "x":1440,
+            "y":900
+        },
+        "Mask":"",
+        "TextSource":"./WCT.txt",
+        "AutoRefreshInterval":1
+    }
+}
