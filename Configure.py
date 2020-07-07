@@ -39,6 +39,10 @@ def main():
     autoRefresh.pack(side="top")
     refresh.pack(ipadx="2",side="top")
     
+    '''
+    
+    Still Developing...
+
     #Wordcloud Mask Image
     maskImg = tk.Frame(Menu)
     enable = tk.IntVar()
@@ -50,7 +54,7 @@ def main():
     mask = tk.Checkbutton(maskImg,text="Enable",fg="cyan",bg="black",variable=enable,onvalue=1,offvalue=0,command=maskChk)
     mask.pack()
     maskImg.pack(side="top")
-
+    '''
 
     Menu.mainloop()
     #2do
