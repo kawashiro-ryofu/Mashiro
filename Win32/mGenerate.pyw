@@ -9,6 +9,7 @@
 #   mGenerate.pyw: WordCloud Background Maker
 #
 
+import tkinter.messagebox as tkm
 import wordcloud as wc
 import matplotlib.pyplot as plt
 import time
@@ -25,11 +26,11 @@ class SETTINGS:
     TextSource = "./WCT.txt"
     AutoRefresh = 0
     def __init__(self):
-        def __init__(self):
+        
         try:
             profile = json.loads(open("./settings.json","r").read())
         except:
-            traceback.format_exc()
+            tkm.showerror("Error",traceback.format_exc())
 
         self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
         self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
@@ -62,7 +63,7 @@ def main():
 
         except:
             # ERROR OUTPUT
-            traceback.format_exc()
+            tkm.showerror("Error",traceback.format_exc())
 
         try:
             # Daylight Background Color
@@ -81,14 +82,14 @@ def main():
             front.to_file("./o.jpg")
             
         except:
-            traceback.format_exc()
+            tkm.showerror("Error",traceback.format_exc())
             
         try:
             #Apply
             applyBG(os.getcwd()+".\\o.jpg")
        
         except:
-            traceback.format_exc()
+            tkm.showerror("Error",traceback.format_exc())
 
 
         #(Wait)
