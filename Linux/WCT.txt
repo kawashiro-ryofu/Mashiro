@@ -1,0 +1,52 @@
+Adventure 冒险        Alone 独自    Amazing 惊奇          Awesome 棒极了 
+Beauty 美丽   Bed 床        Bliss 福祉    Broken 破碎   
+Calm 冷静     Charm 魅力    Cheer 欢呼    Childhood 童年 
+Clumsy 笨拙   Color 色彩    Comfort 安慰          Cry 哭泣 
+Dance 舞蹈    Dark 黑暗     Daydream 白日梦       Dazzle 炫目 
+Death 死亡    Defeat 挫败   Depression 抑郁       Embrace 拥抱 
+Empty 空虚    Excitement 激动       Extraordinary 非凡    Family 家庭 
+Fear 恐惧     Feather 羽毛          Fireflies 萤火虫      Fireworks 烟花 
+Flower 花朵   Flying 飞翔   Forgive 宽恕          Friends 朋友 
+Fun 欢乐      Grief 悲伤    Happiness 幸福        Heart 心脏 
+Holiday 假日          Hope 希望     Hopeless 无助         Hurt 伤痛 
+Joy 喜悦      Laugh 欢笑    Lazy 懒散     Loud 响亮 
+Love 爱情     Lucky 幸运    Marriage 婚姻         Memories 记忆 
+Misery 苦难   Misfortune 不幸       Music 音乐    Nature 自然 
+Ocean 海洋    Pain 痛苦     Party 派对    Passion 热情 
+Peaceful 平静         Play 玩耍     Prayer 祷告   Precious 珍贵 
+Promise 承诺          Rainbow 彩虹          Raincloud 乌云        Romance 浪漫 
+Rose 玫瑰     Sadness 悲伤          Scars 伤疤    Shame 羞耻 
+Silly 愚蠢    Sing 歌唱     Smile 微笑    Sparkle 闪烁 
+Special 特殊          Sunny 晴朗    Sunset 日落   Sweet 甜蜜 
+Tears 泪水    Together 一同         Tragedy 悲剧          Treasure 宝藏 
+Unrequited 单相思     Vacation 假期         Warm 温暖     Wonderful 美好 
+Anger 怒气    Anime 日漫    Blanket 毯子          Boop 卟   
+Bouncy 有弹性         Bubbles 泡泡          Bunny 兔兔    Candy 糖果 
+Cheeks 脸颊   Chocolate 巧克力      Clouds 云朵   Cute 可爱 
+Email 电子邮件        Fantasy 梦幻          Fluffy 蓬松 
+Games 游戏    Giggle 傻笑   Hair 头发     Headphones 耳机 
+Heartbeat 心跳        Hop 跳        Jump 跳跃     Jumpy 神经质 
+Kawaii 卡哇伊         Kiss 亲吻     Kitty 猫咪    Lipstick 口红 
+Lollipop 棒棒糖       Marshmallow 棉花软糖          Melody 旋律   Milk 牛奶 
+Mouse 小鼠    Nibble 啃     Nightgown 睡袍        Papa 爸爸 
+Parfait 芭菲          Peace 和平    Pink 粉色     Playground 操场 
+Poof 噗       Pout 噘嘴     Puppy 狗狗    Pure 单纯 
+Ribbon 缎带   Shiny 闪亮    Shopping 购物         Skipping 快进 
+Skirt 短裙    Socks 袜子    Spinning 旋转         Sticky 黏糊 
+Strawberry 草莓       Sugar 白糖    Summer 夏日   Swimsuit 泳装 
+Twirl 卷曲    Valentine 情人节      Vanilla 香草          Waterfall 瀑布 
+Whisper 轻语          Whistle 口哨 
+Afterimage 残相  	Agonizing 折磨  	Ambient 氛围  	Analysis 分析  	Anxiety 焦虑  	Atone 赎罪 
+Aura 光环  	Breathe 呼吸  	Cage 牢笼  	Captive 俘虏  	Climax 高潮  	Contamination 玷污 
+Covet 贪图  	Crimson 绯红  	Desire 欲望  	Despise 蔑视  	Destiny 宿命  	Determination 决心 
+Disarray 杂乱  	Disaster 灾难  	Disoriented 迷失  	Disown 否认  	Dream 梦想  	Effulgent 灿烂 
+Electricity 电  	Entropy 熵  	Essence 本质  	Eternity 永恒  	Existence 存在  	Explode 爆炸 
+Extreme 极端  	Fester 溃烂  	Fickle 薄情  	Flee 逃跑  	Frightening 吓人  	Graveyard 墓地 
+Heavensent 天赐  	Horror 恐怖  	Imagination 想象力  	Incapable 无能  	Incongruent 不协  	Infallible 万无一失 
+Inferno 地狱  	Infinite 无限  	Insight 洞察力  	Intellectual 智能  	Journey 旅程  	Judgment 审判 
+Landscape 景观  	Lust 情欲  	Massacre 屠杀  	Meager 微薄  	Melancholy 愁绪  	Philosophy 哲学 
+Pleasure 快感  	Portrait 肖像  	Question 问题  	Raindrops 雨滴  	Secretive 隐秘  	Sensation 知觉 
+Starscape 繁星  	Suicide 自杀  	Tenacious 紧挽  	Time 时光  	Uncanny 诡异  	Uncontrollable 失控 
+Unending 无尽  	Universe 宇宙  	Unrestrained 脱缰  	Unstable 不稳定  	Variance 方差  	Vertigo 眩晕 
+Vibrant 活跃  	Vitality 活力  	Vivacious 活泼  	Vivid 生动  	Whirlwind 旋风  	Wrath 愤怒  
+
