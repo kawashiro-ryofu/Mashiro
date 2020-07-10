@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 ~/.mashiro/mG.py &
+python3 ./mGenerate.py &
