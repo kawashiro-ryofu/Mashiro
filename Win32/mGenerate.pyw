@@ -2,7 +2,7 @@
 
 #
 #   Mashiro (Win32 ver.)
-#   Version:    DEV02.2 stable
+#   Version:    DEV03
 #   
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
@@ -16,33 +16,48 @@ import time
 import win32api, win32gui, win32con,os
 import traceback
 import json
+import requests
+from lxml import etree
+import signal
+
+def sigoff(signum,frame):
+    exit()
+
+signal.signal(signal.SIGINT, sigoff)
+
+def errexec(returnInfo:str):
+    tkm.showerror("Error",returnInfo)
+    exit()
 
 class SETTINGS:
-    Color = [1,"white"]
-    Margin = 0
-    Font = "C:\\Windows\\Fonts\\ARIALN.TTF"
+    Color:list = [1,"white"]
+    Margin:int
+    Font:str
     Resolution = [1024,768]
-    Mask = "0"
-    TextSource = "./WCT.txt"
-    AutoRefresh = 0
+    Mask:str
+    AutoRefresh:int
+    Spiders:list
     def __init__(self):
         
         try:
             profile = json.loads(open("./settings.json","r").read())
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
 
-        self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
-        self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
-        self.Margin = profile["Settings"]["BG-Margin"]
-        self.Font = profile["Settings"]["BG-Font"]
-        self.Resolution[0] = profile["Settings"]["Resolution"]['x']
-        self.Resolution[1] = profile["Settings"]["Resolution"]['y']
-        self.Mask = profile["Settings"]["Mask"]
-        self.TextSource = profile["Settings"]["TextSource"]
-        self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
+        try:
+            self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
+            self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
+            self.Margin = profile["Settings"]["BG-Margin"]
+            self.Font = profile["Settings"]["BG-Font"]
+            self.Resolution[0] = profile["Settings"]["Resolution"]['x']
+            self.Resolution[1] = profile["Settings"]["Resolution"]['y']
+            self.Mask = profile["Settings"]["Mask"]
+            self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
+            self.Spiders = profile["Spiders"]
+        except:
+            errexec(traceback.format_exc())
         
-def applyBG(pic):
+def applyBG(pic:str):
     # Apply Background Wallpaper 
     # * https://www.jb51.net/article/155070.htm
     
@@ -52,18 +67,31 @@ def applyBG(pic):
     win32api.RegSetValueEx(regKey, "TileWallpaper", 0, win32con.REG_SZ, "0")
     win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,pic, win32con.SPIF_SENDWININICHANGE)
 
+def spiders(url:list):
+    try:
+        wordSource:str = ""
+        text:str = ""
+        for c in range(len(url)):
+            out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
+            for d in range(len(out)):
+                print(out[d])
+                text += (out[d] + ' ')
+    except:
+        errexec(traceback.format_exc())
+
+    return text
+
 def main():
     
     while 1:
         setting = SETTINGS()
         try:
-            # WCT.txt:Words To Generate Background Wallpaper
-            words = open(setting.TextSource,'r').read()
+            words = spiders(setting.Spiders)
             now = time.localtime(time.time())
 
         except:
             # ERROR OUTPUT
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
 
         try:
             # Daylight Background Color
@@ -75,21 +103,23 @@ def main():
 
             else:
                 color = setting.Color[1]
+
             # Generate Wordcolud
             front = wc.WordCloud(background_color=color,font_path=setting.Font,width = setting.Resolution[0],height = setting.Resolution[1],margin = setting.Margin).generate(words)
+
             plt.imshow(front)
             # Output Wallpaper
             front.to_file("./o.jpg")
             
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             
         try:
             #Apply
             applyBG(os.getcwd()+".\\o.jpg")
        
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
 
 
         #(Wait)

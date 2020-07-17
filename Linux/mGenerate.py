@@ -50,7 +50,7 @@ class SETTINGS:
         try:
             profile = json.loads(open("./settings.json","r").read())
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             offsig(0,0)
 
         try:
@@ -65,7 +65,7 @@ class SETTINGS:
             self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
             self.Output = profile["Settings"]["Output"]
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             offsig(0,0)
 
 def main():
@@ -77,7 +77,7 @@ def main():
             words = open(setting.TextSource,'r').read()
             now = time.localtime(time.time())
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             offsig(0,0)
 
         try:
@@ -90,7 +90,7 @@ def main():
             else:
                 color = setting.Color[1]
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             offsig(0,0)
         try:
         
@@ -100,7 +100,7 @@ def main():
             plt.imshow(front)
             front.to_file(setting.Output)
         except:
-            tkm.showerror("Error",traceback.format_exc())
+            errexec(traceback.format_exc())
             offsig(0,0)
 
         time.sleep(setting.AutoRefresh * 60)
