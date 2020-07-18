@@ -1,13 +1,8 @@
 #!/usr/bin/python3
-
 #
 #   Mashiro (Win32 ver.)
-<<<<<<< HEAD
 #   Version:    DEV03
-=======
-#   Version:    0.02 DEV
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
-#   
+#  
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
 #   mGenerate.pyw: WordCloud Background Maker
@@ -24,10 +19,12 @@ import requests
 from lxml import etree
 import signal
 
+
 def sigoff(signum,frame):
     exit()
 
 signal.signal(signal.SIGINT, sigoff)
+
 
 def errexec(returnInfo:str):
     tkm.showerror("Error",returnInfo)
@@ -37,12 +34,9 @@ def errexec(returnInfo:str):
 def offsig(signum,frame):
     exit(signum)
 
-#Bind 
-signal.signal(signal.SIGTSTP, offsig)
 
 
 class SETTINGS:
-<<<<<<< HEAD
     Color:list = [1,"white"]
     Margin:int
     Font:str
@@ -50,38 +44,13 @@ class SETTINGS:
     Mask:str
     AutoRefresh:int
     Spiders:list
-=======
-    #Default Settings
-    
-    #Color  Element 1:Daylight Mode;
-    #       Element 2:Background Color.
-    Color = [1,"white"]
-    #Margin Of The Word Cloud
-    Margin = 0
-    #Word Font
-    Font = "/usr/share/fonts/opentype/noto/NotoSerifCJK-Medium.ttc"
-    #Screen Resolution
-    Resolution = [1024,768]
-    #Word Cloud Mask Image
-    #Disable:0
-    Mask = "0"
-    #Default Text Source
-    TextSource = "./WCT.txt"
-    #Autorefresh Inervals(minutes)
-    AutoRefresh = 1
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
+
     def __init__(self):
         
         try:
             profile = json.loads(open("./settings.json","r").read())
         except:
-<<<<<<< HEAD
             errexec(traceback.format_exc())
-
-=======
-            tkm.showerror("Error",traceback.format_exc())
-            offsig(0,0)
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
         try:
             self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
             self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
@@ -90,22 +59,13 @@ class SETTINGS:
             self.Resolution[0] = profile["Settings"]["Resolution"]['x']
             self.Resolution[1] = profile["Settings"]["Resolution"]['y']
             self.Mask = profile["Settings"]["Mask"]
-<<<<<<< HEAD
             self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
             self.Spiders = profile["Spiders"]
         except:
             errexec(traceback.format_exc())
         
 def applyBG(pic:str):
-=======
-            self.TextSource = profile["Settings"]["TextSource"]
-            self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
-        except:
-            tkm.showerror("Error",traceback.format_exc())
-            offsig(0,0)
 
-def applyBG(pic):
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
     # Apply Background Wallpaper 
     # * https://www.jb51.net/article/155070.htm
     
@@ -139,12 +99,9 @@ def main():
 
         except:
             # ERROR OUTPUT
-<<<<<<< HEAD
+
             errexec(traceback.format_exc())
-=======
-            tkm.showerror("Error",traceback.format_exc())
-            offsig(0,0)
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
+
 
         try:
             # Daylight Background Color
@@ -165,24 +122,16 @@ def main():
             front.to_file("./o.jpg")
             
         except:
-<<<<<<< HEAD
+
             errexec(traceback.format_exc())
-=======
-            tkm.showerror("Error",traceback.format_exc())
-            offsig(0,0)
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
+
             
         try:
             #Apply
             applyBG(os.getcwd()+".\\o.jpg")
        
         except:
-<<<<<<< HEAD
             errexec(traceback.format_exc())
-=======
-            tkm.showerror("Error",traceback.format_exc())
-            offsig(0,0)
->>>>>>> 70586401c29f3232e9dbc03924cda47e05c03327
 
 
         #(Wait)
