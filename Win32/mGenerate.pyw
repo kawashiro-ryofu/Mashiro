@@ -84,7 +84,7 @@ def spiders(url:list):
         for c in range(len(url)):
             out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
             for d in range(len(out)):
-                print(out[d])
+                #print(out[d])
                 text += (out[d] + ' ')
     except:
         errexec(traceback.format_exc())
