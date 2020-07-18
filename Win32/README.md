@@ -3,9 +3,9 @@
 A Mashiro Version For Windows Platform
 
 
-DEV2.2 New Features:
-1. Add **settings.json** to configure/read Configure
-2. Add tkinter massagebox to show error infomations
+DEV3 New Features:
+
+Add Spiders to get word from the web
 
 # How To Deploy?
 
