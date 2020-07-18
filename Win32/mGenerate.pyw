@@ -49,7 +49,8 @@ class SETTINGS:
         
         try:
             #Get Configure File(~/.Mashiro/settings.json)
-            profile = json.loads(open(os.environ['HOME']+"\\.Mashiro\\settings.json","r").read())
+            
+            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r").read())
         except:
             errexec(traceback.format_exc())
         try:
@@ -120,7 +121,7 @@ def main():
 
             plt.imshow(front)
             # Output Wallpaper
-            front.to_file("./o.jpg")
+            front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
             
         except:
 
@@ -129,7 +130,7 @@ def main():
             
         try:
             #Apply
-            applyBG(os.getcwd()+".\\o.jpg")
+            applyBG(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
        
         except:
             errexec(traceback.format_exc())
