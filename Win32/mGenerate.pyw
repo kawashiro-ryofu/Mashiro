@@ -48,7 +48,8 @@ class SETTINGS:
     def __init__(self):
         
         try:
-            profile = json.loads(open("./settings.json","r").read())
+            #Get Configure File(~/.Mashiro/settings.json)
+            profile = json.loads(open(os.environ['HOME']+"\\.Mashiro\\settings.json","r").read())
         except:
             errexec(traceback.format_exc())
         try:
@@ -138,4 +139,5 @@ def main():
         time.sleep(setting.AutoRefresh * 60)
 
 if(__name__ == "__main__"):
+    
     main()
