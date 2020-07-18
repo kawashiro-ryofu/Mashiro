@@ -13,5 +13,8 @@
         "Mask":"",
         "TextSource":"./WCT.txt",
         "AutoRefreshInterval":1
-    }
+    },
+    "Spiders":[
+        "https://www.bilibili.com/"
+    ]
 }
