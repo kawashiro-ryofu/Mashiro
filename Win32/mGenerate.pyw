@@ -48,7 +48,9 @@ class SETTINGS:
     def __init__(self):
         
         try:
-            profile = json.loads(open("./settings.json","r").read())
+            #Get Configure File(~/.Mashiro/settings.json)
+            
+            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r").read())
         except:
             errexec(traceback.format_exc())
         try:
@@ -82,7 +84,7 @@ def spiders(url:list):
         for c in range(len(url)):
             out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
             for d in range(len(out)):
-                print(out[d])
+                #print(out[d])
                 text += (out[d] + ' ')
     except:
         errexec(traceback.format_exc())
@@ -119,7 +121,7 @@ def main():
 
             plt.imshow(front)
             # Output Wallpaper
-            front.to_file("./o.jpg")
+            front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
             
         except:
 
@@ -128,7 +130,7 @@ def main():
             
         try:
             #Apply
-            applyBG(os.getcwd()+".\\o.jpg")
+            applyBG(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
        
         except:
             errexec(traceback.format_exc())
@@ -138,4 +140,5 @@ def main():
         time.sleep(setting.AutoRefresh * 60)
 
 if(__name__ == "__main__"):
+    
     main()
