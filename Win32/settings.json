@@ -16,5 +16,6 @@
     },
     "Spiders":[
         "https://www.bilibili.com/"
-    ]
+    ],
+    "StopWords":["播放"]
 }
