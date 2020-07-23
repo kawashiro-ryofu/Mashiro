@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 #   Mashiro (Win32 ver.)
-#   Version:    DEV03
+#   Version:    DEV04 20200703
 #  
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
@@ -18,7 +18,7 @@ import json
 import requests
 from lxml import etree
 import signal
-
+import re
 
 def sigoff(signum,frame):
     exit()
@@ -44,13 +44,15 @@ class SETTINGS:
     Mask:str
     AutoRefresh:int
     Spiders:list
+    StopWords:list
+
 
     def __init__(self):
         
         try:
             #Get Configure File(~/.Mashiro/settings.json)
             
-            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r").read())
+            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="UTF-8").read())
         except:
             errexec(traceback.format_exc())
         try:
@@ -63,6 +65,10 @@ class SETTINGS:
             self.Mask = profile["Settings"]["Mask"]
             self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
             self.Spiders = profile["Spiders"]
+            self.StopWords = profile["StopWords"]
+        except IOError:
+            errexec("Could not find config file \" "+ os.path.expanduser('~')+"\\.Mashiro\\settings.json" +"\"")
+        
         except:
             errexec(traceback.format_exc())
         
@@ -77,18 +83,21 @@ def applyBG(pic:str):
     win32api.RegSetValueEx(regKey, "TileWallpaper", 0, win32con.REG_SZ, "0")
     win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,pic, win32con.SPIF_SENDWININICHANGE)
 
-def spiders(url:list):
+def spiders(url:list,StopWords:list):
     try:
         wordSource:str = ""
         text:str = ""
         for c in range(len(url)):
             out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
             for d in range(len(out)):
-                #print(out[d])
-                text += (out[d] + ' ')
+                for e in range(len(StopWords)):
+                    if(re.search(StopWords[e],out[d]) == None):
+                        text += (out[d] + ' ')
+
     except:
         errexec(traceback.format_exc())
 
+    print(text)
     return text
 
 def main():
@@ -96,7 +105,7 @@ def main():
     while 1:
         setting = SETTINGS()
         try:
-            words = spiders(setting.Spiders)
+            words = spiders(setting.Spiders,setting.StopWords)
             now = time.localtime(time.time())
 
         except:
