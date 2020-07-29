@@ -18,3 +18,4 @@ toml==0.10.1
 wordcloud==1.7.0
 wrapt==1.12.1
 wxPython==4.1.0
+goto-statement==1.2
