@@ -24,7 +24,7 @@ A Mashiro Version For Windows Platform
 
 2. Run Command(Win + R,type CMD) ,change current directory to "Mashiro/Win32"
 
-3. If Your Python is AMD64 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl``` in the console.If Your Pythin is i386 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl```
+3. If Your Python is AMD64 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl``` in the console.If Your Python is i386 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl```
 
 4. Install Requirements.Type "pip install -r requirements.txt" in the console
 

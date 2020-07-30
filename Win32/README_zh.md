@@ -24,7 +24,7 @@ Windows平台~~量身定做~~的Mashiro版本
 
 2.运行命令（Win + R，键入CMD），将当前目录更改为“ Mashiro / Win32”
 
-3.如果您的Python是AMD64版本，请在控制台中键入`pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl`。如果您的Pythin是i386版本，请键入`pip install wordcloud- 1.7.0-cp38-cp38-win_amd64.whl`
+3.如果您的Python是AMD64版本，请在控制台中键入`pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl`。如果您的PythoSn是i386版本，请键入`pip install wordcloud- 1.7.0-cp38-cp38-win_amd64.whl`
 
 4.安装需求。在控制台中输入“ pip install -r requirements.txt”
 
