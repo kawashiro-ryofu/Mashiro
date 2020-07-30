@@ -1,3 +1,5 @@
-# Mashiro
+# Mashiro for Linux
 
-A Word Cloud Desktop Background Generator
+Current Version:0.02 DEV
+
+(To Be Update.)

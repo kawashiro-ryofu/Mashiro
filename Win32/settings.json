@@ -1,15 +1,17 @@
 {
     "Settings":{
         "BG-Color":{
-            "Daylight":1,
-            "Color":"black"
+            "Daylight":true,
+            "Color":"black",
+            "Position":{
+                "Enable":true,
+				"//":"Element 1:Degrees;Element 2:Cents;Element 3:Seconds",
+                "Latitude":[121,20,30],
+                "Longitude":[31,10,30]
+            }
         },
         "BG-Margin":0,
         "BG-Font":"C:\\Windows\\Fonts\\MSYH.TTC",
-        "Resolution":{
-            "x":1440,
-            "y":900
-        },
         "Mask":"",
         "TextSource":"./WCT.txt",
         "AutoRefreshInterval":1
@@ -19,3 +21,4 @@
     ],
     "StopWords":["播放"]
 }
+
