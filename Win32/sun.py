@@ -160,11 +160,32 @@ def output(rise:float,Set:float,glong:float):
     '''2 SUNSET HOUR'''
     '''3 SUNSET MINUTE'''
 
+'''
+
 def calc(year:int,month:int,date:int,latitude:list,longitude:list):
     
     UTo:float = 180.0
     glat=latitude[0]+latitude[1]/60+latitude[2]/3600
     glong=longitude[0]+longitude[1]/60+longitude[2]/3600  
+    TC = t_century(days(year,month,date),UTo)
+    GS = G_sun(TC)
+    LS = L_sun(TC)
+    Gha = GHA(UTo,GS,ecliptic_longitude(LS,GS))
+    E = e(h,glat,sun_deviation(earth_tilt(TC),ecliptic_longitude(LS,GS)))
+    
+    UT = UT_rise(UTo,Gha,glong,E)
+    Rise:float=result_rise(UT_rise(UTo,Gha,glong,E),UTo,glong,glat,year,month,date)
+
+    UT = UT_set(UTo,Gha,glong,E)
+    Set:float=result_set(UT,UTo,glong,glat,year,month,date); 
+    return output(Rise,Set,glong)
+'''
+
+def calc(year:int,month:int,date:int,LAT:list,LON:list):
+    
+    UTo:float = 180.0
+    glat=LON[0]+LON[1]/60+LON[2]/3600
+    glong=LAT[0]+LAT[1]/60+LAT[2]/3600  
     TC = t_century(days(year,month,date),UTo)
     GS = G_sun(TC)
     LS = L_sun(TC)

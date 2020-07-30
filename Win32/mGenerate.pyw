@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 #   Mashiro (Win32 ver.)
-#   Version:    DEV05 20200730
+#   Version:    DEV05 20200730 2nd UPDATE
 #  
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
@@ -19,6 +19,7 @@ from lxml import etree
 import signal
 import re
 import urllib3
+import sun
 
 def sigoff(signum,frame):
     exit()
@@ -47,9 +48,10 @@ class SETTINGS:
     AutoRefresh:int
     Spiders:list
     StopWords:list
-    # Position:list = [[0,0,0],[0,0,0]]
-    # Position[0]:latitude | [0][0] Degrees | [0][1] Cents | [0][2] Seconde
-    # Position[1]:latitude | [1][0] Degrees | [1][1] Cents | [1][2] Seconde    
+    Position:list = [False,[0,0,0],[0,0,0]]
+    # Position[0]:Enable
+    # Position[1]:latitude  | [0][0] Degrees | [0][1] Cents
+    # Position[2]:longitude | [1][0] Degrees | [1][1] Cents    
     # <=To Be Continued/|/
 
     def __init__(self):
@@ -65,12 +67,24 @@ class SETTINGS:
             self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
             self.Margin = profile["Settings"]["BG-Margin"]
             self.Font = profile["Settings"]["BG-Font"]
-            self.Resolution[0] = profile["Settings"]["Resolution"]['x']
-            self.Resolution[1] = profile["Settings"]["Resolution"]['y']
+            self.Resolution[0] = win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
+            self.Resolution[1] = win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
             self.Mask = profile["Settings"]["Mask"]
             self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
             self.Spiders = profile["Spiders"]
             self.StopWords = profile["StopWords"]
+            self.Position[0] = profile["Settings"]["BG-Color"]["Position"]["Enable"]
+            self.Position[1] = profile["Settings"]["BG-Color"]["Position"]["Latitude"]
+            self.Position[2] = profile["Settings"]["BG-Color"]["Position"]["Longitude"]
+
+            if(len(self.Position) != 3):
+                raise(IOError)
+                #To Be Continued
+
+            if(self.Position[0] == False):
+                self.Position[1] = [0,0,0]
+                self.Position[2] = [0,0,0]
+            
 
             # Set auto-start in the registry
             Key = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,"Software\Microsoft\Windows\CurrentVersion\Run",0,win32con.KEY_SET_VALUE)
@@ -78,15 +92,7 @@ class SETTINGS:
             
         except IOError:
             errexec("Could not find config file \" "+ os.path.expanduser('~')+"\\.Mashiro\\settings.json" +"\"",1)
-            Color:list = [1,"white"]
-            Margin:int
-            Font:str
-            Resolution = [1024,768]
-            Mask:str
-            AutoRefresh:int
-            Spiders:list
-            StopWords:list
-        
+
         except:
             errexec(traceback.format_exc(),1)
 
@@ -133,28 +139,58 @@ def main():
         try:
             words = spiders(setting.Spiders,setting.StopWords)
             now = time.localtime(time.time())
-
+            print(now)
+            SUN = sun.calc(
+                now.tm_year,
+                now.tm_mon,
+                now.tm_mday,
+                setting.Position[1],
+                setting.Position[2])
+            print(SUN)
         except:
             # ERROR OUTPUT
-
             errexec(traceback.format_exc(),0)
 
         try:
             
             # Daylight Background Color
             if(setting.Color[0] == 1):
-                if((now.tm_hour > 6) == 1):
+                if((now.tm_hour >= SUN[0]) and (now.tm_min >= SUN[1])):
                     # Generate Wordcolud
-                    front = wc.WordCloud(background_color="white",font_path=setting.Font,width = setting.Resolution[0],height = setting.Resolution[1],margin = setting.Margin).generate(words)
+                    
+                    front = wc.WordCloud(
+                        background_color="white",
+                        font_path=setting.Font,
+                        width = setting.Resolution[0],
+                        height = setting.Resolution[1],
+                        margin = setting.Margin
+                        ).generate(words)
+                    
                     front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
-                if((now.tm_hour > 19 or now.tm_hour < 6) == 1):
+
+                if((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3])or(now.tm_hour < SUN[0])):
                     # Generate Wordcolud
-                    front = wc.WordCloud(background_color="black",font_path=setting.Font,width = setting.Resolution[0],height = setting.Resolution[1],margin = setting.Margin).generate(words)
+
+                    front = wc.WordCloud(
+                        background_color="black",
+                        font_path=setting.Font,
+                        width = setting.Resolution[0],
+                        height = setting.Resolution[1],
+                        margin = setting.Margin
+                        ).generate(words)
+                    
                     front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
             else:
                 # Generate Wordcolud
-                front = wc.WordCloud(background_color=setting.Color[1],font_path=setting.Font,width = setting.Resolution[0],height = setting.Resolution[1],margin = setting.Margin).generate(words)
+                front = wc.WordCloud(
+                    background_color=setting.Color[1],
+                    font_path=setting.Font,
+                    width = setting.Resolution[0],
+                    height = setting.Resolution[1],
+                    margin = setting.Margin
+                    ).generate(words)
+                
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
             
         except:
