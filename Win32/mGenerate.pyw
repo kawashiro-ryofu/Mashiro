@@ -25,7 +25,7 @@ def sigoff(signum,frame):
     exit()
 
 signal.signal(signal.SIGINT, sigoff)
-
+words:str = ""
 
 def errexec(returnInfo:str,Exit):
     #tkm.showerror("Error",returnInfo)
@@ -59,7 +59,8 @@ class SETTINGS:
         try:
             #Get Configure File(~/.Mashiro/settings.json)
             
-            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="UTF-8").read())
+            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="utf-8-sig").read())
+            
         except:
             errexec(traceback.format_exc(),1)
         try:
@@ -111,13 +112,17 @@ def applyBG(pic:str):
 def spiders(url:list,StopWords:list):
     wordSource:str = ""
     text:str = ""
+
     try:
         for c in range(len(url)):
             out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
             for d in range(len(out)):
-                for e in range(len(StopWords)):
-                    if(re.search(StopWords[e],out[d]) == None):
-                        text += (out[d] + ' ')
+                if(len(StopWords) != 0):
+                    for e in range(len(StopWords)):
+                        print(out[d])
+                        if(re.search(StopWords[e],out[d])!=None):
+                            pass
+                text += (out[d] + ' ')
 
     except requests.exceptions.Timeout:
         text = "ConnectionTimedOut 连接超时 接続がタイムアウトしました 連接超時 СоединениеИстекший 연결이만료되었습니다 หมดเวลาการเชื่อมต่อ";
@@ -133,11 +138,12 @@ def spiders(url:list,StopWords:list):
     return text
 
 def main():
-    
-    while 1:
+      while 1:
         setting = SETTINGS()
+        global words
+        words += spiders(setting.Spiders,setting.StopWords)
+
         try:
-            words = spiders(setting.Spiders,setting.StopWords)
             now = time.localtime(time.time())
             print(now)
             SUN = sun.calc(
@@ -165,7 +171,7 @@ def main():
                         height = setting.Resolution[1],
                         margin = setting.Margin
                         ).generate(words)
-                    
+                    print("Finished Generate Wordcloud Background ")
                     front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
                 if((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3])or(now.tm_hour < SUN[0])):
@@ -178,7 +184,7 @@ def main():
                         height = setting.Resolution[1],
                         margin = setting.Margin
                         ).generate(words)
-                    
+                    print("Finished Generate Wordcloud Background ")
                     front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
             else:
@@ -192,11 +198,15 @@ def main():
                     ).generate(words)
                 
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
+
+        except ValueError:
+            errexec("This URL is not available,Please Change Another Site.",0)
+            words += "UnavailableURL"
             
         except:
-
             errexec(traceback.format_exc(),1)
-
+        else:
+            word = ""
             
         try:
             #Apply
