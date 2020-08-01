@@ -18,7 +18,6 @@ import requests
 from lxml import etree
 import signal
 import re
-import urllib3
 import sun
 
 def sigoff(signum,frame):
