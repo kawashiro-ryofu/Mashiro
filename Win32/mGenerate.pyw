@@ -88,7 +88,7 @@ class SETTINGS:
 
             # Set auto-start in the registry
             Key = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,"Software\Microsoft\Windows\CurrentVersion\Run",0,win32con.KEY_SET_VALUE)
-            win32api.RegSetValueEx(Key,"Mashiro", 0, win32con.REG_SZ,os.path.split(os.path.realpath(__file__))[0]+os.path.split(os.path.realpath(__file__))[1])
+            win32api.RegSetValueEx(Key,"Mashiro", 0, win32con.REG_SZ,os.path.split(os.path.realpath(__file__))[0]+'\\'+os.path.split(os.path.realpath(__file__))[1])
             
         except IOError:
             errexec("Could not find config file \" "+ os.path.expanduser('~')+"\\.Mashiro\\settings.json" +"\"",1)
