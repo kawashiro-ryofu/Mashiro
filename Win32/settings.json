@@ -11,7 +11,7 @@
             }
         },
         "BG-Margin":0,
-        "BG-Font":"C:\\Windows\\Fonts\\MSYH.TTC",
+        "BG-Font":"C:\\Windows\\Fonts\\simhei.ttf",
         "Mask":"",
         "TextSource":"./WCT.txt",
         "AutoRefreshInterval":1
