@@ -36,10 +36,27 @@ def applyBG(pic:str):
     # * https://www.jb51.net/article/155070.htm
     
     # open register
-    regKey = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,"Control Panel\\Desktop",0,win32con.KEY_SET_VALUE)
-    win32api.RegSetValueEx(regKey,"WallpaperStyle", 0, win32con.REG_SZ, "2")
-    win32api.RegSetValueEx(regKey, "TileWallpaper", 0, win32con.REG_SZ, "0")
-    win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER,pic, win32con.SPIF_SENDWININICHANGE)
+    regKey = win32api.RegOpenKeyEx(
+        win32con.HKEY_CURRENT_USER,
+        "Control Panel\\Desktop",
+        0,
+        win32con.KEY_SET_VALUE)
+    win32api.RegSetValueEx(
+        regKey,
+        "WallpaperStyle",
+        0,
+        win32con.REG_SZ,
+        "2")
+    win32api.RegSetValueEx(
+        regKey,
+        "TileWallpaper",
+        0,
+        win32con.REG_SZ,
+        "0")
+    win32gui.SystemParametersInfo(
+        win32con.SPI_SETDESKWALLPAPER,
+        pic,
+        win32con.SPIF_SENDWININICHANGE)
 
 #The Spider 
 def spiders(url:list,StopWords:list):
@@ -112,7 +129,10 @@ def main():
         try:
             
             # Daylight Background Color
-            if((setting.Color[0] == 1) and (now.tm_hour >= SUN[0]) and (now.tm_min >= SUN[1])):
+            if(
+                (setting.Color[0] == 1) and 
+                (now.tm_hour >= SUN[0]) and 
+                (now.tm_min >= SUN[1])):
                 # Generate Wordcolud
                 # During the day
                 front = wc.WordCloud(
@@ -125,7 +145,11 @@ def main():
                     
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
-            elif((setting.Color[0] == 1)and((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3])or(now.tm_hour < SUN[0]))):
+            elif(
+                (setting.Color[0] == 1)and
+                ((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3]) or 
+                (setting.Color[0] == 1)and(now.tm_hour < SUN[0]))
+                ):
                 # Generate Wordcolud
                 # In night
                 front = wc.WordCloud(

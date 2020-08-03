@@ -11,10 +11,10 @@
 import win32api,os,win32con,traceback,json
 
 # Error Output
-def errexec(returnInfo:str,Exit):
+def errexec(returnInfo:str,Exit:bool):
     #tkm.showerror("Error",returnInfo)
     win32api.MessageBox(0,returnInfo,"OOPS!",win32con.MB_ICONERROR)
-    if(Exit == 1):
+    if(Exit == True):
         exit()
 
 # Store the user configuration
