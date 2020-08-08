@@ -7,8 +7,10 @@ import mSet
 import json
 import _thread
 import time
-import fontname
-
+import requests
+import locale
+import re
+import tkinter.messagebox as tkmsg
 
 
 '''Show Changes On Title'''
@@ -23,7 +25,6 @@ MainWin.title("Mashiro Settings")
 MainWin.geometry("640x480")
 MainWin.resizable(0,0)
 
-LeftPart = tk.Frame(MainWin)
 
 '''Load Settings'''
 setting = mSet.SETTINGS()
@@ -37,16 +38,17 @@ Color = tk.StringVar()
 Color.set(setting.Color[1])
 Font = tk.StringVar()
 Font.set(setting.Font)
-
+Spider:list = setting.Spiders
+Position:list = setting.Position
 '''Heading'''
 tk.Label(
     MainWin,
-    text="🔧Settings",
+    text="🛠️Settings",
     font=("Arial",30)
     ).pack(side="top",ipadx="3")
 
 '''Auto Refresh Interval'''
-refresh = tk.Frame(LeftPart)
+refresh = tk.Frame(MainWin)
 tk.Label(
     refresh,
     text="⏰Auto Refresh Interval",
@@ -76,7 +78,7 @@ tk.Label(
 refresh.pack(side="top")
 
 '''Color Settings'''
-ColorConf = tk.Frame(LeftPart)
+ColorConf = tk.Frame(MainWin)
 tk.Label(
     ColorConf,
     text="🎨Color",
@@ -116,9 +118,67 @@ ColorMoniter = tk.Label(
     text = "        ",
     bg = Color.get()
 )
+'''LocationSetting'''
+locationConf = tk.Frame(ColorConf)
+EnableLocating = tk.IntVar()
+EnableLocating.set(int(Position[0]))
+
+def LocationEnable():
+    if(EnableLocating.get() == 1):
+        Position[0] = True
+        NowLoc.pack()
+        _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Locating Enabled"))
+    else:
+        Position[0] = False
+        NowLoc.pack_forget()
+        _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Locating Disabled"))
+
+tk.Checkbutton(
+    locationConf,
+    text="Calculate Sunrise and Sunset by Getting Your Location",
+    font=("Helvetica",10),
+    variable=EnableLocating,
+    command=LocationEnable,
+).pack(ipadx="2",side="top")
+
+locrq = requests.get("http://ip-api.com/json")
+city:str
+if(locrq.status_code >= 400):
+    mSet.errexec("HTTP ErrorCode:"+str(locrq.status_code),0)
+else:
+    dat = locrq.json()
+    latitude = dat["lat"]
+    longitude = dat["lon"]
+    city = "You are at "+dat["city"] +","+ dat["regionName"] +","+ dat["country"]
+    def f2s(i:float):
+        deg = int(i)
+        i -= deg * 1.0
+        i *= 60
+        cent = int(i)
+        i -= cent * 1.0
+        i *= 60
+        sec = int(i)
+        return [deg,cent,sec]
+    Position[1] = f2s(latitude)
+    Position[2] = f2s(longitude)
+    NowLoc = tk.Label(locationConf,text=city)
+        
+
+
+locationConf.pack()
 ColorConf.pack(ipadx="2",side="top")
-'''Font Setting'''
-FontConf = tk.Frame(LeftPart)
+
+# There are few problems to be solve.
+# In Three Words, We Need Help
+#
+#Current Default font:
+#    English(en_US en_AU en): Lucida Sana(C:\\Windows\\l_10646.ttf)
+#    Chinese(zh_CN): MS-YaHei(C:\\Windows\\MSYH.ttc)    (zh_TW 如果台湾版自带微软雅黑字体，否则就用黑体)
+#    Japaneese(ja):MS UI Gothic(C:\\Windows\\msgothic.ttc)
+#   To Be Continued...
+'''
+Font Setting
+FontConf = tk.Frame(MainWin)
 tk.Label(
     FontConf,
     text="✒Font",
@@ -136,22 +196,83 @@ tk.Label(
 ).pack(side="left")
 
 FontConf.pack(ipadx="2",side="top")
+'''
+
 
 '''Automatic save the configuration file'''
+
+'''Spider Configuration'''
+SpiderConf = tk.Frame(MainWin)
+tk.Label(
+    SpiderConf,
+    text="🕷Spider",
+    fg="blue",
+    font=("Helvetica",20),
+).pack(ipadx="2",side="top")
+URLlistPart = tk.Frame(SpiderConf)
+URLlist = tk.Listbox(
+    URLlistPart,
+    selectmode="MUTIPLE",
+    height=5,
+    width=20
+)
+for i in range(len(Spider)):
+    URLlist.insert("end",Spider[i])
+scrollbar = tk.Scrollbar(URLlistPart)
+scrollbar.config(command=URLlist.yview)
+scrollbar.pack(side="right",fill="y")
+URLlist.pack(ipadx=2,side="left")
+URLlistPart.pack()
+'''URL List Editing'''
+def AddUrl():
+    InputWindow = tk.Toplevel()
+    InputWindow.title("Enter URL.")
+    InputWindow.geometry("256x96")
+    InputWindow.resizable(0,0)
+    tk.Label(InputWindow,text="Enter URL").pack(side="top")
+    def Save():
+        ''' Valid Check'''
+        if(re.match('http://',NewURLi.get())==None and re.match('https://',NewURLi.get())==None):
+            tkmsg.showerror("Oops","Invalid Syntax")
+        else:
+            global Spider,URLlist
+            Spider += [NewURLi.get()]
+            URLlist.insert("end",NewURLi.get())
+            _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Added URL"))
+            InputWindow.destroy()
+    NewURLi = tk.Entry(InputWindow,width=40)
+    tk.Button(InputWindow,text="OK",command=Save).pack(side="bottom",ipadx=3,ipady=3)
+    NewURLi.pack(side="top",ipadx=3,ipady=3)
+
+    InputWindow.mainloop()
+def DelUrl():
+    global Spider
+    a = URLlist.curselection()[0]
+    del(Spider[a])
+    _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Delete URL success"))
+    URLlist.delete(0)
+
+tk.Button(SpiderConf,text="➕",command=AddUrl).pack(side="left")
+tk.Button(SpiderConf,text="➖",command=DelUrl).pack(side="left")
+SpiderConf.pack(ipadx="2",side="top")
+
+
 def ApplyRefresh(threadname,delay):
     while(1):
-        print(AutoRefresh.get(),end=';')
-        print(ColorDayLight.get())
+
         if(ColorDayLight.get() != 1):
+            locationConf.pack_forget()
             ChooseColor.pack(side="right")
             ColorMoniter["bg"] = Color.get()
             ColorMoniter.pack(side="left")
+        
         else:
+            locationConf.pack()
             ChooseColor.pack_forget()
             ColorMoniter.pack_forget()
+
+        
         time.sleep(delay)
 _thread.start_new_thread( ApplyRefresh, ("Thread-0", 0.1))
-
-LeftPart.pack(side="left")
 
 MainWin.mainloop()
