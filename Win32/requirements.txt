@@ -14,3 +14,5 @@ requests==2.24.0
 six==1.15.0
 urllib3==1.25.10
 wordcloud==1.7.0
+fontname==0.2.0
+freetype-py==2.2.0
