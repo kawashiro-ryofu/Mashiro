@@ -149,16 +149,17 @@ def Zone(glong:float):
 #Calculate the TimeZone
 
 def output(rise:float,Set:float,glong:float):
+    '''0 SUNRISE HOUR'''
+    '''1 SUNRISE MINUTE'''
+    '''2 SUNSET HOUR'''
+    '''3 SUNSET MINUTE'''
     return (
         int(rise/15+Zone(glong)),
         int(60*(rise/15+Zone(glong)-(int)(rise/15+Zone(glong)))),
         int(Set/15+Zone(glong)),
         int(60*(Set/15+Zone(glong)-(int)(Set/15+Zone(glong))))
         )
-    '''0 SUNRISE HOUR'''
-    '''1 SUNRISE MINUTE'''
-    '''2 SUNSET HOUR'''
-    '''3 SUNSET MINUTE'''
+    
 
 '''
 
@@ -196,5 +197,5 @@ def calc(year:int,month:int,date:int,LAT:list,LON:list):
     Rise:float=result_rise(UT_rise(UTo,Gha,glong,E),UTo,glong,glat,year,month,date)
 
     UT = UT_set(UTo,Gha,glong,E)
-    Set:float=result_set(UT,UTo,glong,glat,year,month,date); 
+    Set:float=result_set(UT,UTo,glong,glat,year,month,date)
     return output(Rise,Set,glong)

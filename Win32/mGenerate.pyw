@@ -107,7 +107,10 @@ def main():
     #The Mainloop (Sure?
     while 1:
         #Load User's Configuration
-        setting = SETTINGS()
+        try:
+            setting = SETTINGS()
+        except:
+            errexec("Failed To Read Settings Profile",1)
         global words
         #Craw Words From the Web
         words = spiders(setting.Spiders,setting.StopWords)
@@ -121,7 +124,6 @@ def main():
                 now.tm_mday,
                 setting.Position[1],
                 setting.Position[2])
-            
         except:
             # ERROR OUTPUT
             errexec(traceback.format_exc(),0)

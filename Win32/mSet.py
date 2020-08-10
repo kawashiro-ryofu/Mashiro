@@ -52,33 +52,36 @@ class SETTINGS:
             
         except:
             errexec(traceback.format_exc(),1)
-        try:
-            self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
-            self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
-            self.Margin = profile["Settings"]["BG-Margin"]
-            self.Font = profile["Settings"]["BG-Font"]
-            self.Resolution[0] = win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
-            self.Resolution[1] = win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
-            self.Mask = profile["Settings"]["Mask"]
-            self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
-            self.Spiders = profile["Spiders"]
-            self.StopWords = profile["StopWords"]
-            self.Position[0] = profile["Settings"]["BG-Color"]["Position"]["Enable"]
-            self.Position[1] = profile["Settings"]["BG-Color"]["Position"]["Latitude"]
-            self.Position[2] = profile["Settings"]["BG-Color"]["Position"]["Longitude"]
+        
+        self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
+        self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
+        self.Margin = profile["Settings"]["BG-Margin"]
+        self.Font = profile["Settings"]["BG-Font"]
+        self.Resolution[0] = win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
+        self.Resolution[1] = win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
+        self.Mask = profile["Settings"]["Mask"]
+        self.AutoRefresh = profile["Settings"]["AutoRefreshInterval"]
+        self.Spiders = profile["Spiders"]
+        self.StopWords = profile["StopWords"]
+        self.Position[0] = profile["Settings"]["BG-Color"]["Position"]["Enable"]
+        self.Position[1] = profile["Settings"]["BG-Color"]["Position"]["Latitude"]
+        self.Position[2] = profile["Settings"]["BG-Color"]["Position"]["Longitude"]
 
-            if(len(self.Position) != 3):
-                raise(IOError)
-                #To Be Continued
+        if(len(self.Position) != 3):
+            raise(IOError)
+            #To Be Continued
 
-            if(self.Position[0] == False):
-                self.Position[1] = [0,0,0]
-                self.Position[2] = [0,0,0]
-                #If You Disabled This,We Will Set The Default Latitude And Longitude 0°,0°
-                #This won't affect anything         
-
+        if(self.Position[0] == False):
+            self.Position[1] = [0,0,0]
+            self.Position[2] = [0,0,0]
+            #If You Disabled This,We Will Set The Default Latitude And Longitude 0°,0°
+            #This won't affect anything         
+        '''
         except IOError:
             errexec("Failed To Read File \""+ os.path.expanduser('~')+"\\.Mashiro\\settings.json" +"\"",1)
 
         except:
             errexec(traceback.format_exc(),1)
+        '''
+
+        
