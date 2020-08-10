@@ -20,6 +20,8 @@ import signal
 import re
 import sun
 from mSet import SETTINGS,errexec
+from mSettingsGUI import mSettingsGUI
+import sys
 
 # Bind The SIGINT signal
 def sigoff(signum,frame):
@@ -110,7 +112,10 @@ def main():
         try:
             setting = SETTINGS()
         except:
-            errexec("Failed To Read Settings Profile",1)
+            errexec("Failed To Read Settings Profile",0)
+            mSettingsGUI()
+            os.execl(sys.executable, sys.executable, * sys.argv)
+
         global words
         #Craw Words From the Web
         words = spiders(setting.Spiders,setting.StopWords)
@@ -124,6 +129,7 @@ def main():
                 now.tm_mday,
                 setting.Position[1],
                 setting.Position[2])
+            print(SUN)
         except:
             # ERROR OUTPUT
             errexec(traceback.format_exc(),0)

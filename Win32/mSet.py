@@ -51,8 +51,8 @@ class SETTINGS:
             profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="utf-8-sig").read())
             
         except:
-            errexec(traceback.format_exc(),1)
-        
+            raise(IOError)
+
         self.Color[0] = profile["Settings"]["BG-Color"]["Daylight"]
         self.Color[1] = profile["Settings"]["BG-Color"]["Color"]
         self.Margin = profile["Settings"]["BG-Margin"]
@@ -76,12 +76,5 @@ class SETTINGS:
             self.Position[2] = [0,0,0]
             #If You Disabled This,We Will Set The Default Latitude And Longitude 0°,0°
             #This won't affect anything         
-        '''
-        except IOError:
-            errexec("Failed To Read File \""+ os.path.expanduser('~')+"\\.Mashiro\\settings.json" +"\"",1)
-
-        except:
-            errexec(traceback.format_exc(),1)
-        '''
 
         

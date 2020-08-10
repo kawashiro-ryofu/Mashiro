@@ -185,8 +185,8 @@ def calc(year:int,month:int,date:int,latitude:list,longitude:list):
 def calc(year:int,month:int,date:int,LAT:list,LON:list):
     
     UTo:float = 180.0
-    glat=LON[0]+LON[1]/60+LON[2]/3600
-    glong=LAT[0]+LAT[1]/60+LAT[2]/3600  
+    glat=LAT[0]+LAT[1]/60+LAT[2]/3600
+    glong=LON[0]+LON[1]/60+LON[2]/3600  
     TC = t_century(days(year,month,date),UTo)
     GS = G_sun(TC)
     LS = L_sun(TC)
@@ -199,3 +199,4 @@ def calc(year:int,month:int,date:int,LAT:list,LON:list):
     UT = UT_set(UTo,Gha,glong,E)
     Set:float=result_set(UT,UTo,glong,glat,year,month,date)
     return output(Rise,Set,glong)
+
