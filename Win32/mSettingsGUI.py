@@ -2,7 +2,7 @@
 #
 #   Mashiro (Win32 ver.)
 #   Version:    DEV05 Settings-GUI Developing
-#  
+#
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
 #   mSettingGUI.py:Mashiro Settings(GUI)
@@ -49,13 +49,18 @@ def mSettingsGUI():
         Color = tk.StringVar()
         Color.set("#000000")
         Font = tk.StringVar()
-        
+
         if(re.match('zh_CN',locale.getdefaultlocale()[0])!=None):
             '''Chinese Simple'''
             '''For Windows 7'''
-            if(platform.version == "6.1.7601"):
+            if(
+                (re.match(platform.version(),"6.1.7601")!=None)is True or
+                (re.match(platform.version(),"6.1.7600")!=None)is True
+                ):
+                print("Win7")
                 Font.set("C:\\Windows\\Fonts\\MSYH.TTF")
             else:
+                print("Win8+")
                 '''For Windows 8.1 And Windows 10'''
                 Font.set("C:\\Windows\\Fonts\\MSYH.TTC")
         elif(re.match('zh',locale.getdefaultlocale()[0])!=None):
@@ -182,7 +187,7 @@ def mSettingsGUI():
             mSet.errexec("Failed to connect to remote server\nPlease Check Your Internet Connection",0)
             EnableLocating.set(0)
             Position[0] = False
-        
+
         if(locrq.status_code >= 400):
             mSet.errexec("HTTP ErrorCode:"+str(locrq.status_code),0)
         else:
@@ -200,7 +205,7 @@ def mSettingsGUI():
                 sec = int(i)
                 return [deg,cent,sec]
         return (f2s(latitude),f2s(longitude))
-        
+
     NowLoc = tk.Label(locationConf,text=city)
 
 
@@ -228,7 +233,7 @@ def mSettingsGUI():
         command=LocationEnable,
     ).pack(ipadx="2",side="top")
 
-            
+
 
 
     locationConf.pack()
@@ -331,7 +336,7 @@ def mSettingsGUI():
         swSetForm.geometry("320x256")
         swSetForm.resizable(0,0)
         swSetForm.title("Stopwords Settings")
-        
+
         StoplistPart = tk.Frame(swSetForm)
         '''Stopwords List'''
         Stoplist = tk.Listbox(
@@ -355,10 +360,10 @@ def mSettingsGUI():
             InputWindow.title("Add Stop Word")
             InputWindow.geometry("256x96")
             InputWindow.resizable(0,0)
-            
+
             tk.Label(InputWindow,text="Input Stop Word").pack(side="top")
             def Save():
-                    global StopWords       
+                    global StopWords
                     '''Add Into Current Stopwords List'''
                     StopWords += [AddStopWord.get()]
                     Stoplist.insert("end",AddStopWord.get())
@@ -377,10 +382,10 @@ def mSettingsGUI():
             del(StopWords[a])
             Stoplist.delete(0)
             _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Updated StopWords Lists"))
-        tk.Button(swSetForm,text="➕",command=Add).pack(side="left")
-        tk.Button(swSetForm,text="➖",command=Del).pack(side="left")
+        tk.Button(swSetForm,text="➕Add",command=Add).pack(side="left")
+        tk.Button(swSetForm,text="➖Delete",command=Del).pack(side="left")
         swSetForm.mainloop()
-        
+
 
 
     tk.Button(SpiderConf,text="🚫Stopwords Settings",command=stopword).pack(side="left")
@@ -389,13 +394,13 @@ def mSettingsGUI():
     '''Setting GUI Auto Refresh And Save'''
     def ApplyRefresh(threadname,delay):
         while(1):
-            print(Position)
+            print(re.match(platform.version(),"6.1.7601")!=None)
             if(ColorDayLight.get() != 1):
                 locationConf.pack_forget()
                 ChooseColor.pack(side="right")
                 ColorMoniter["bg"] = Color.get()
                 ColorMoniter.pack(side="left")
-            
+
             else:
                 locationConf.pack()
                 ChooseColor.pack_forget()
@@ -423,7 +428,15 @@ def mSettingsGUI():
             "StopWords":StopWords
         })
         print(profile)
-        open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8-sig").write(profile)
+        try:
+            with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8-sig") as settingJson:
+                settingJson.write(profile)
+        except FileNotFoundError:
+            os.mkdir(os.path.expanduser('~')+"\\.Mashiro")
+            with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8-sig") as settingJson:
+                settingJson.write(profile)
+
         MainWin.destroy()
+        time.sleep(5)
     MainWin.protocol("WM_DELETE_WINDOW", save)
     MainWin.mainloop()

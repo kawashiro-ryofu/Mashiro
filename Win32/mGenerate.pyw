@@ -2,7 +2,7 @@
 #
 #   Mashiro (Win32 ver.)
 #   Version:    DEV05 4rd UPDATE
-#  
+#
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
 #   mGenerate.pyw: WordCloud Background Maker
@@ -33,34 +33,36 @@ signal.signal(signal.SIGINT, sigoff)
 words:str = ""
 
 def applyBG(pic:str):
+    try:
+        # Apply Background Wallpaper
+        # * https://www.jb51.net/article/155070.htm
 
-    # Apply Background Wallpaper 
-    # * https://www.jb51.net/article/155070.htm
-    
-    # open register
-    regKey = win32api.RegOpenKeyEx(
-        win32con.HKEY_CURRENT_USER,
-        "Control Panel\\Desktop",
-        0,
-        win32con.KEY_SET_VALUE)
-    win32api.RegSetValueEx(
-        regKey,
-        "WallpaperStyle",
-        0,
-        win32con.REG_SZ,
-        "2")
-    win32api.RegSetValueEx(
-        regKey,
-        "TileWallpaper",
-        0,
-        win32con.REG_SZ,
-        "0")
-    win32gui.SystemParametersInfo(
-        win32con.SPI_SETDESKWALLPAPER,
-        pic,
-        win32con.SPIF_SENDWININICHANGE)
+        # open register
+        regKey = win32api.RegOpenKeyEx(
+            win32con.HKEY_CURRENT_USER,
+            "Control Panel\\Desktop",
+            0,
+            win32con.KEY_SET_VALUE)
+        win32api.RegSetValueEx(
+            regKey,
+            "WallpaperStyle",
+            0,
+            win32con.REG_SZ,
+            "2")
+        win32api.RegSetValueEx(
+            regKey,
+            "TileWallpaper",
+            0,
+            win32con.REG_SZ,
+            "0")
+        win32gui.SystemParametersInfo(
+            win32con.SPI_SETDESKWALLPAPER,
+            pic,
+            win32con.SPIF_SENDWININICHANGE)
+    except:
+        errexec("Failed to change wallpaper",0)
 
-#The Spider 
+#The Spider
 def spiders(url:list,StopWords:list):
     text:str = ""
 
@@ -84,10 +86,10 @@ def spiders(url:list,StopWords:list):
         text = "ConnectionTimedOut 连接超时 接続がタイムアウトしました 連接超時 СоединениеИстекший 연결이만료되었습니다 หมดเวลาการเชื่อมต่อ"
     except requests.exceptions.ConnectionError:
         text = "ConnectionError 连接错误 接続エラー 連接錯誤 ОшибкаПодключения 연결오류 การเชื่อมต่อล้มเหลว"
-        
+
     except:
         errexec(traceback.format_exc(),1)
-        
+
     return text
 
 def main():
@@ -114,7 +116,7 @@ def main():
         except:
             errexec("Failed To Read Settings Profile",0)
             mSettingsGUI()
-            os.execl(sys.executable, sys.executable, * sys.argv)
+            setting = SETTINGS()
 
         global words
         #Craw Words From the Web
@@ -135,11 +137,11 @@ def main():
             errexec(traceback.format_exc(),0)
 
         try:
-            
+
             # Daylight Background Color
             if(
-                (setting.Color[0] == 1) and 
-                (now.tm_hour >= SUN[0]) and 
+                (setting.Color[0] == 1) and
+                (now.tm_hour >= SUN[0]) and
                 (now.tm_min >= SUN[1])):
                 # Generate Wordcolud
                 # During the day
@@ -150,12 +152,12 @@ def main():
                     height = setting.Resolution[1],
                     margin = setting.Margin
                     ).generate(words)
-                    
+
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
             elif(
                 (setting.Color[0] == 1)and
-                ((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3]) or 
+                ((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3]) or
                 (setting.Color[0] == 1)and(now.tm_hour < SUN[0]))
                 ):
                 # Generate Wordcolud
@@ -178,7 +180,7 @@ def main():
                     height = setting.Resolution[1],
                     margin = setting.Margin
                     ).generate(words)
-                
+
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
         except ValueError:
@@ -192,19 +194,22 @@ def main():
                 height = setting.Resolution[1],
                 margin = setting.Margin
                 ).generate(words)
-                
+
             front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
-            
+        except OSError:
+            errexec("Can not open resource\nPlease have a check in Your Settings",0)
+            mSettingsGUI()
+
         except:
             errexec(traceback.format_exc(),1)
         else:
             #Clear The Words
             words = ""
-            
+
         try:
             #Apply
             applyBG(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
-       
+
         except:
             errexec(traceback.format_exc(),0)
 
@@ -213,6 +218,5 @@ def main():
         time.sleep(setting.AutoRefresh * 60)
 
 if(__name__ == "__main__"):
-    
-    main()
 
+    main()

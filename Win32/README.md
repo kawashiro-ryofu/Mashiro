@@ -30,9 +30,15 @@ A Mashiro Version For Windows Platform
 
 5. Run(double click) "mGenerate.pyw"
 
+# Known Bugs
+
+1. Unable To Edit Spider URL Lists and Stopwords in GUI Settings
+
+2. No emoji Support for Windows 7 Platform
+
 # Todo
 
-1. Make a Win32 installer
+1. ~~Make a Win32 installer~~(Cancled)
 
 2. Wordcloud Mask
 
