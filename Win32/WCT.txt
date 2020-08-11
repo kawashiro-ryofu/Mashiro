@@ -1,43 +1,43 @@
-Adventure£¨Ã°ÏÕ£© 	Alone£¨¶À×Ô£© 	Amazing£¨¾ªÆæ£© 	Awesome£¨°ô¼«ÁË£©
+Adventureï¼ˆå†’é™©ï¼‰ 	Aloneï¼ˆç‹¬è‡ªï¼‰ 	Amazingï¼ˆæƒŠå¥‡ï¼‰ 	Awesomeï¼ˆæ£’æäº†ï¼‰
 
-Beauty£¨ÃÀÀö£© 	Bed£¨´²£© 	Bliss£¨¸£ìí£© 	Broken£¨ÆÆËé£¨£©£©
+Beautyï¼ˆç¾ä¸½ï¼‰ 	Bedï¼ˆåºŠï¼‰ 	Blissï¼ˆç¦ç¥‰ï¼‰ 	Brokenï¼ˆç ´ç¢ï¼ˆï¼‰ï¼‰
 
-Calm£¨Àä¾²£© 	Charm£¨÷ÈÁ¦£© 	Cheer£¨»¶ºô£© 	Childhood£¨Í¯Äê£©
+Calmï¼ˆå†·é™ï¼‰ 	Charmï¼ˆé­…åŠ›ï¼‰ 	Cheerï¼ˆæ¬¢å‘¼ï¼‰ 	Childhoodï¼ˆç«¥å¹´ï¼‰
 
-Clumsy£¨±¿×¾£© 	Color£¨É«²Ê£© 	Comfort£¨°²Î¿£© 	Cry£¨¿ŞÆü£©
+Clumsyï¼ˆç¬¨æ‹™ï¼‰ 	Colorï¼ˆè‰²å½©ï¼‰ 	Comfortï¼ˆå®‰æ…°ï¼‰ 	Cryï¼ˆå“­æ³£ï¼‰
 
-Dance£¨Îèµ¸£© 	Dark£¨ºÚ°µ£© 	Daydream£¨°×ÈÕÃÎ£© 	Dazzle£¨ìÅÄ¿£©
+Danceï¼ˆèˆè¹ˆï¼‰ 	Darkï¼ˆé»‘æš—ï¼‰ 	Daydreamï¼ˆç™½æ—¥æ¢¦ï¼‰ 	Dazzleï¼ˆç‚«ç›®ï¼‰
 
-Death£¨ËÀÍö£© 	Defeat£¨´ì°Ü£© 	Depression£¨ÒÖÓô£© 	Embrace£¨Óµ±§£©
+Deathï¼ˆæ­»äº¡ï¼‰ 	Defeatï¼ˆæŒ«è´¥ï¼‰ 	Depressionï¼ˆæŠ‘éƒï¼‰ 	Embraceï¼ˆæ‹¥æŠ±ï¼‰
 
-Empty£¨¿ÕĞé£© 	Excitement£¨¼¤¶¯£© 	Extraordinary£¨·Ç·²£© 	Family£¨¼ÒÍ¥£©
+Emptyï¼ˆç©ºè™šï¼‰ 	Excitementï¼ˆæ¿€åŠ¨ï¼‰ 	Extraordinaryï¼ˆéå‡¡ï¼‰ 	Familyï¼ˆå®¶åº­ï¼‰
 
-Fear£¨¿Ö¾å£© 	Feather£¨ÓğÃ«£© 	Fireflies£¨Ó©»ğ³æ£© 	Fireworks£¨ÑÌ»¨£©
+Fearï¼ˆææƒ§ï¼‰ 	Featherï¼ˆç¾½æ¯›ï¼‰ 	Firefliesï¼ˆè¤ç«è™«ï¼‰ 	Fireworksï¼ˆçƒŸèŠ±ï¼‰
 
-Flower£¨»¨¶ä£© 	Flying£¨·ÉÏè£© 	Forgive£¨¿íË¡£© 	Friends£¨ÅóÓÑ£©
+Flowerï¼ˆèŠ±æœµï¼‰ 	Flyingï¼ˆé£ç¿”ï¼‰ 	Forgiveï¼ˆå®½æ•ï¼‰ 	Friendsï¼ˆæœ‹å‹ï¼‰
 
-Fun£¨»¶ÀÖ£© 	Grief£¨±¯ÉË£© 	Happiness£¨ĞÒ¸££© 	Heart£¨ĞÄÔà£©
+Funï¼ˆæ¬¢ä¹ï¼‰ 	Griefï¼ˆæ‚²ä¼¤ï¼‰ 	Happinessï¼ˆå¹¸ç¦ï¼‰ 	Heartï¼ˆå¿ƒè„ï¼‰
 
-Holiday£¨¼ÙÈÕ£© 	Hope£¨Ï£Íû£© 	Hopeless£¨ÎŞÖú£© 	Hurt£¨ÉËÍ´£©
+Holidayï¼ˆå‡æ—¥ï¼‰ 	Hopeï¼ˆå¸Œæœ›ï¼‰ 	Hopelessï¼ˆæ— åŠ©ï¼‰ 	Hurtï¼ˆä¼¤ç—›ï¼‰
 
-Joy£¨Ï²ÔÃ£© 	Laugh£¨»¶Ğ¦£© 	Lazy£¨ÀÁÉ¢£© 	Loud£¨ÏìÁÁ£©
+Joyï¼ˆå–œæ‚¦ï¼‰ 	Laughï¼ˆæ¬¢ç¬‘ï¼‰ 	Lazyï¼ˆæ‡’æ•£ï¼‰ 	Loudï¼ˆå“äº®ï¼‰
 
-Love£¨°®Çé£© 	Lucky£¨ĞÒÔË£© 	Marriage£¨»éÒö£© 	Memories£¨¼ÇÒä£©
+Loveï¼ˆçˆ±æƒ…ï¼‰ 	Luckyï¼ˆå¹¸è¿ï¼‰ 	Marriageï¼ˆå©šå§»ï¼‰ 	Memoriesï¼ˆè®°å¿†ï¼‰
 
-Misery£¨¿àÄÑ£© 	Misfortune£¨²»ĞÒ£© 	Music£¨ÒôÀÖ£© 	Nature£¨×ÔÈ»£©
+Miseryï¼ˆè‹¦éš¾ï¼‰ 	Misfortuneï¼ˆä¸å¹¸ï¼‰ 	Musicï¼ˆéŸ³ä¹ï¼‰ 	Natureï¼ˆè‡ªç„¶ï¼‰
 
-Ocean£¨º£Ñó£© 	Pain£¨Í´¿à£© 	Party£¨ÅÉ¶Ô£© 	Passion£¨ÈÈÇé£©
+Oceanï¼ˆæµ·æ´‹ï¼‰ 	Painï¼ˆç—›è‹¦ï¼‰ 	Partyï¼ˆæ´¾å¯¹ï¼‰ 	Passionï¼ˆçƒ­æƒ…ï¼‰
 
-Peaceful£¨Æ½¾²£© 	Play£¨ÍæË££© 	Prayer£¨µ»¸æ£© 	Precious£¨Õä¹ó£©
+Peacefulï¼ˆå¹³é™ï¼‰ 	Playï¼ˆç©è€ï¼‰ 	Prayerï¼ˆç¥·å‘Šï¼‰ 	Preciousï¼ˆçè´µï¼‰
 
-Promise£¨³ĞÅµ£© 	Rainbow£¨²Êºç£© 	Raincloud£¨ÎÚÔÆ£© 	Romance£¨ÀËÂş£©
+Promiseï¼ˆæ‰¿è¯ºï¼‰ 	Rainbowï¼ˆå½©è™¹ï¼‰ 	Raincloudï¼ˆä¹Œäº‘ï¼‰ 	Romanceï¼ˆæµªæ¼«ï¼‰
 
-Rose£¨Ãµ¹å£© 	Sadness£¨±¯ÉË£© 	Scars£¨ÉË°Ì£© 	Shame£¨Ğß³Ü£©
+Roseï¼ˆç«ç‘°ï¼‰ 	Sadnessï¼ˆæ‚²ä¼¤ï¼‰ 	Scarsï¼ˆä¼¤ç–¤ï¼‰ 	Shameï¼ˆç¾è€»ï¼‰
 
-Silly£¨ÓŞ´À£© 	Sing£¨¸è³ª£© 	Smile£¨Î¢Ğ¦£© 	Sparkle£¨ÉÁË¸£©
+Sillyï¼ˆæ„šè ¢ï¼‰ 	Singï¼ˆæ­Œå”±ï¼‰ 	Smileï¼ˆå¾®ç¬‘ï¼‰ 	Sparkleï¼ˆé—ªçƒï¼‰
 
-Special£¨ÌØÊâ£© 	Sunny£¨ÇçÀÊ£© 	Sunset£¨ÈÕÂä£© 	Sweet£¨ÌğÃÛ£©
+Specialï¼ˆç‰¹æ®Šï¼‰ 	Sunnyï¼ˆæ™´æœ—ï¼‰ 	Sunsetï¼ˆæ—¥è½ï¼‰ 	Sweetï¼ˆç”œèœœï¼‰
 
-Tears£¨ÀáË®£© 	Together£¨Ò»Í¬£© 	Tragedy£¨±¯¾ç£© 	Treasure£¨±¦²Ø£©
+Tearsï¼ˆæ³ªæ°´ï¼‰ 	Togetherï¼ˆä¸€åŒï¼‰ 	Tragedyï¼ˆæ‚²å‰§ï¼‰ 	Treasureï¼ˆå®è—ï¼‰
 
-Unrequited£¨µ¥ÏàË¼£© 	Vacation£¨¼ÙÆÚ£© 	Warm£¨ÎÂÅ¯£© 	Wonderful£¨ÃÀºÃ£© 
+Unrequitedï¼ˆå•ç›¸æ€ï¼‰ 	Vacationï¼ˆå‡æœŸï¼‰ 	Warmï¼ˆæ¸©æš–ï¼‰ 	Wonderfulï¼ˆç¾å¥½ï¼‰ 
