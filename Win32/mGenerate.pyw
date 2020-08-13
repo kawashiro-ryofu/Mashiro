@@ -20,8 +20,8 @@ import signal
 import re
 import sun
 from mSet import SETTINGS,errexec
-from mSettingsGUI import mSettingsGUI
 import sys
+import subprocess
 
 # Bind The SIGINT signal
 def sigoff(signum,frame):
@@ -106,7 +106,8 @@ def main():
         0,
         win32con.REG_SZ,
         os.path.split(
-            os.path.realpath(__file__))[0]+'\\'+os.path.split(os.path.realpath(__file__))[1])
+            os.path.realpath(__file__)
+        )[0]+'\\'+os.path.split(os.path.realpath(__file__))[1])
 
     #The Mainloop (Sure?
     while 1:
@@ -115,8 +116,16 @@ def main():
             setting = SETTINGS()
         except:
             errexec("Failed To Read Settings Profile",0)
-            mSettingsGUI()
-            setting = SETTINGS()
+            os.popen(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw')
+            wait=True
+            while(wait):
+                try:
+                    setting = SETTINGS()
+                    print("Waiting")
+                except:
+                    pass
+                else:
+                    wait=False
 
         global words
         #Craw Words From the Web

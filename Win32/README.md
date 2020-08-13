@@ -32,7 +32,7 @@ A Mashiro Version For Windows Platform
 
 # Known Bugs
 
-1. Unable To Edit Spider URL Lists and Stopwords in GUI Settings
+1. ~~Unable To Edit Spider URL Lists and Stopwords in GUI Settings~~
 
 2. No emoji Support for Windows 7 Platform
 

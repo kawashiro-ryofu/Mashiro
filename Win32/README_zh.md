@@ -32,7 +32,7 @@ Windows平台~~量身定做~~的Mashiro版本
 
 # 已知的Bug
 
-1. 无法修改爬虫(Spider)列表和屏蔽词(Stopwords)列表
+1. ~~无法修改爬虫(Spider)列表和屏蔽词(Stopwords)列表~~
 
 2. 在Windows 7下没有对Emoji的支持
 
