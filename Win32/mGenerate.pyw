@@ -116,6 +116,10 @@ def main():
             setting = SETTINGS()
         except:
             errexec("Failed To Read Settings Profile",0)
+            try:
+                open(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw',"rb")
+            except FileNotFoundError:
+                errexec("The component is missing, please reinstall this product.",1)
             os.popen(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw')
             wait=True
             while(wait):

@@ -40,4 +40,6 @@ Windows平台~~量身定做~~的Mashiro版本
 
 1. ~~制作一个Win32安装程序~~(废除)
 
-2. Wordcloud蒙版
+2. 系统托盘图标
+
+3. Wordcloud蒙版

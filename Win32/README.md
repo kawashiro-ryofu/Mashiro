@@ -40,6 +40,8 @@ A Mashiro Version For Windows Platform
 
 1. ~~Make a Win32 installer~~(Cancled)
 
-2. Wordcloud Mask
+2. Add Sys Tray Icon
+
+3. Wordcloud Mask
 
 *Forgive Me. My English Is Suck.
