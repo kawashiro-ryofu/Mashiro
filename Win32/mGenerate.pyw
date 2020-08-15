@@ -195,7 +195,7 @@ def main():
         except ValueError:
             # (= \)
             errexec("This URL is not available,Please Change Another Site.",0)
-            words = "UnavailableURL"
+            words = "UnavailableURL URL不可用 使用できないURL НедоступныйURL  사용할수없는URL   URLไม่พร้อมใช้งาน "
             front = wc.WordCloud(
                 background_color=setting.Color[1],
                 font_path=setting.Font,
@@ -218,7 +218,7 @@ def main():
         try:
             #Apply
             applyBG(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
-
+            word=""
         except:
             errexec(traceback.format_exc(),0)
 

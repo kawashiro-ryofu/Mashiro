@@ -428,11 +428,11 @@ def save():
     })
     print(profile)
     try:
-        with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8-sig") as settingJson:
+        with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8") as settingJson:
             settingJson.write(profile)
     except FileNotFoundError:
         os.mkdir(os.path.expanduser('~')+"\\.Mashiro")
-        with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8-sig") as settingJson:
+        with open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","w",encoding="utf-8") as settingJson:
             settingJson.write(profile)
 
     MainWin.destroy()
