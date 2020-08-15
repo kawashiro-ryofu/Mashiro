@@ -36,6 +36,8 @@ A Mashiro Version For Windows Platform
 
 2. No emoji Support for Windows 7 Platform
 
+3. Problem with Non-ASCII character coding in profile.
+
 # Todo
 
 1. ~~Make a Win32 installer~~(Cancled)
