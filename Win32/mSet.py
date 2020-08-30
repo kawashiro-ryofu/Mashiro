@@ -2,7 +2,7 @@
 #
 #   Mashiro (Win32 ver.)
 #   Version:    DEV05 4rd UPDATE
-#  
+#
 #   (C)Copyright 2020 RYOUN & the Mashiro Developers
 #
 #   mSet.py: mGenerate Needed Functions and Classes
@@ -41,15 +41,15 @@ class SETTINGS:
     Position:list = [False,[0,0,0],[0,0,0]]
     # Position[0]:Enable
     # Position[1]:latitude  | [0][0] Degrees | [0][1] Cents
-    # Position[2]:longitude | [1][0] Degrees | [1][1] Cents    
+    # Position[2]:longitude | [1][0] Degrees | [1][1] Cents
 
     def __init__(self):
-        
+
         try:
             #Get Configure File(~/.Mashiro/settings.json)
-            
-            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="utf-8-sig").read())
-            
+
+            profile = json.loads(open(os.path.expanduser('~')+"\\.Mashiro\\settings.json","r",encoding="utf-8").read())
+
         except:
             raise(IOError)
 
@@ -75,6 +75,4 @@ class SETTINGS:
             self.Position[1] = [0,0,0]
             self.Position[2] = [0,0,0]
             #If You Disabled This,We Will Set The Default Latitude And Longitude 0°,0°
-            #This won't affect anything         
-
-        
+            #This won't affect anything

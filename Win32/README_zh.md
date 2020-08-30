@@ -36,8 +36,12 @@ Windows平台~~量身定做~~的Mashiro版本
 
 2. 在Windows 7下没有对Emoji的支持
 
+3. 配置文件中非ASCII字符编码问题
+
 # To-do
 
 1. ~~制作一个Win32安装程序~~(废除)
 
-2. Wordcloud蒙版
+2. 系统托盘图标
+
+3. Wordcloud蒙版

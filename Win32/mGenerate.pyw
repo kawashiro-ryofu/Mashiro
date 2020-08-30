@@ -116,6 +116,10 @@ def main():
             setting = SETTINGS()
         except:
             errexec("Failed To Read Settings Profile",0)
+            try:
+                open(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw',"rb")
+            except FileNotFoundError:
+                errexec("The component is missing, please reinstall this product.",1)
             os.popen(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw')
             wait=True
             while(wait):
@@ -195,7 +199,7 @@ def main():
         except ValueError:
             # (= \)
             errexec("This URL is not available,Please Change Another Site.",0)
-            words = "UnavailableURL"
+            words = "UnavailableURL URL不可用 使用できないURL НедоступныйURL  사용할수없는URL   URLไม่พร้อมใช้งาน "
             front = wc.WordCloud(
                 background_color=setting.Color[1],
                 font_path=setting.Font,
@@ -218,7 +222,7 @@ def main():
         try:
             #Apply
             applyBG(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
-
+            word=""
         except:
             errexec(traceback.format_exc(),0)
 
