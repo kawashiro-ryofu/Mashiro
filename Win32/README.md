@@ -2,11 +2,11 @@
 
 A Mashiro Version For Windows Platform
 
-# DEV5 New Features:
+# BETA 
 
-1. Change the wallpaper background-color according to the sunrise and sunset  time of the current location
+1. Fixed A Few Problems;
 
-2. Automatic set the wallpaper resolution
+2. Add Scopebar Icon(Still Developing)
 
 # How To Deploy?
 
@@ -32,11 +32,11 @@ A Mashiro Version For Windows Platform
 
 # Known Bugs
 
-1. ~~Unable To Edit Spider URL Lists and Stopwords in GUI Settings~~
+1. ~~Unable To Edit Spider URL Lists and Stopwords in GUI Settings~~ (fixed)
 
-2. No emoji Support for Windows 7 Platform
+2. ~~No emoji Support for Windows 7 Platform~~ (fixed)
 
-3. Problem with Non-ASCII character coding in profile.
+3. ~~Problem with Non-ASCII character coding in profile.~~ (fixed)
 
 # Todo
 

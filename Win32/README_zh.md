@@ -2,11 +2,9 @@
 
 Windows平台~~量身定做~~的Mashiro版本
 
-# DEV5：
+# BETA
 
-1. 根据当前位置的日出和日落时间更改墙纸的背景颜色
-
-2. 自动设置壁纸分辨率
+修复部分BUG，（即将）加入任务栏图标
 
 # 部署
 
@@ -24,7 +22,7 @@ Windows平台~~量身定做~~的Mashiro版本
 
 2. 运行命令（Win + R，键入CMD），将当前目录更改为“ Mashiro / Win32”
 
-3. 如果您的Python是AMD64版本，请在控制台中键入`pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl`。如果您的PythoSn是i386版本，请键入`pip install wordcloud- 1.7.0-cp38-cp38-win_amd64.whl`
+3. 如果您的Python是AMD64版本，请在控制台中键入`pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl`。如果您的Python是32位，请键入`pip install wordcloud- 1.7.0-cp38-cp38-win32.whl`
 
 4.安装需求。在控制台中输入“ pip install -r requirements.txt”
 
@@ -32,11 +30,11 @@ Windows平台~~量身定做~~的Mashiro版本
 
 # 已知的Bug
 
-1. ~~无法修改爬虫(Spider)列表和屏蔽词(Stopwords)列表~~
+1. ~~无法修改爬虫(Spider)列表和屏蔽词(Stopwords)列表~~ （已解决）
 
-2. 在Windows 7下没有对Emoji的支持
+2. ~~在Windows 7下没有对Emoji的支持~~ （已解决）
 
-3. 配置文件中非ASCII字符编码问题
+3. ~~配置文件中非ASCII字符编码问题~~ （已解决）
 
 # To-do
 
