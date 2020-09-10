@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 #
-#   Mashiro (Win32 ver.)
-#   Version:    DEV05 4rd UPDATE
+#   TopixPop Win32
+#   Version:    BETA
 #
-#   (C)Copyright 2020 RYOUN & the Mashiro Developers
+#   (C)Copyright 2020 RYOUN & the TopixPop Developers
 #
 #   mGenerate.pyw: WordCloud Background Maker
 #
