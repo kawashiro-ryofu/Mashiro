@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 #
-#   Mashiro (Win32 ver.)
-#   Version:    DEV05 Settings-GUI Developing
+#   TopixPop (Win32)
+#   Version:  BETA
 #
-#   (C)Copyright 2020 RYOUN & the Mashiro Developers
+#   (C)Copyright 2020 RYOUN & the TopixPop Developers
 #
-#   mSettingGUI.py:Mashiro Settings(GUI)
+#   mSettingGUI.py: Settings(GUI)
 #
 import tkinter as tk
 import tkinter.colorchooser as tkcolor
@@ -28,11 +28,11 @@ import signal
 def TitleEffact(threadname,delay,Info):
     MainWin.title(Info)
     time.sleep(2)
-    MainWin.title("Mashiro Settings")
+    MainWin.title("TopixPop Settings")
 
 '''Generate the window class'''
 MainWin = tk.Tk()
-MainWin.title("Mashiro Settings")
+MainWin.title("TopixPop Settings")
 MainWin.geometry("640x480")
 MainWin.resizable(0,0)
 
@@ -48,6 +48,7 @@ except IOError:
     Color = tk.StringVar()
     Color.set("#000000")
     Font = tk.StringVar()
+    AutoStart = tk.IntVar()
 
     if(re.match('zh_CN',locale.getdefaultlocale()[0])!=None):
         '''Chinese Simple'''
@@ -92,19 +93,21 @@ else:
     Spider = setting.Spiders
     StopWords:list = setting.StopWords
     Position:list = setting.Position
+    AutoStart = tk.IntVar()
+    AutoStart.set(setting.AutoStart)
 
-'''Heading'''
+'''Heading
 tk.Label(
     MainWin,
-    text="🛠️Settings",
+    text="Settings",
     font=("Arial",30)
     ).pack(side="top",ipadx="3")
-
+'''
 '''Auto Refresh Interval'''
 refresh = tk.Frame(MainWin)
 tk.Label(
     refresh,
-    text="⏰Auto Refresh Interval",
+    text="Auto Refresh Interval",
     fg="blue",
     font=("Helvetica",20)
     ).pack()
@@ -125,8 +128,8 @@ tk.Spinbox(
 
 tk.Label(
     refresh,
-    text="Minutes",
-    font=("Helvetica",10),
+    text="Minute(s)",
+    
     ).pack()
 refresh.pack(side="top")
 
@@ -134,7 +137,7 @@ refresh.pack(side="top")
 ColorConf = tk.Frame(MainWin)
 tk.Label(
     ColorConf,
-    text="🎨Color",
+    text="Background Color",
     fg="blue",
     font=("Helvetica",20),
 ).pack(ipadx="2",side="top")
@@ -151,7 +154,7 @@ def DaylightStatus():
 tk.Checkbutton(
     ColorConf,
     text="Enable Daylight Background Color",
-    font=("Helvetica",10),
+
     variable=ColorDayLight,
     command=DaylightStatus,
 ).pack(ipadx="2",side="top")
@@ -205,8 +208,6 @@ def GetLocation():
             return [deg,cent,sec]
     return (f2s(latitude),f2s(longitude))
 
-NowLoc = tk.Label(locationConf,text=city)
-
 
 def LocationEnable():
     if(EnableLocating.get() == 1):
@@ -226,8 +227,8 @@ def LocationEnable():
 
 tk.Checkbutton(
     locationConf,
-    text="Calculate Sunrise and Sunset by Getting Your Location",
-    font=("Helvetica",10),
+    text="Calculate Time Of Sunrise and Sunset by Getting Your Location",
+
     variable=EnableLocating,
     command=LocationEnable,
 ).pack(ipadx="2",side="top")
@@ -251,7 +252,7 @@ Font Setting
 FontConf = tk.Frame(MainWin)
 tk.Label(
     FontConf,
-    text="✒Font",
+    text="Font",
     fg="blue",
     font=("Helvetica",20),
 ).pack(ipadx="2",side="top")
@@ -275,7 +276,7 @@ FontConf.pack(ipadx="2",side="top")
 SpiderConf = tk.Frame(MainWin)
 tk.Label(
     SpiderConf,
-    text="🕷Spider",
+    text="Spider",
     fg="blue",
     font=("Helvetica",20),
 ).pack(ipadx="2",side="top")
@@ -302,7 +303,7 @@ def AddUrl():
     InputWindow.title("Enter URL.")
     InputWindow.geometry("256x96")
     InputWindow.resizable(0,0)
-    tk.Label(InputWindow,text="Enter URL").pack(side="top")
+    tk.Label(InputWindow,text="Enter URL.").pack(side="top")
     def Save():
         ''' Valid Check'''
         if(re.match('http://',NewURLi.get())==None and re.match('https://',NewURLi.get())==None):
@@ -327,15 +328,15 @@ def DelUrl():
     _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Delete URL success"))
     URLlist.delete(0)
 
-tk.Button(SpiderConf,text="➕Add",command=AddUrl).pack(side="left")
-tk.Button(SpiderConf,text="➖Delete",command=DelUrl).pack(side="left")
+tk.Button(SpiderConf,text="+ Add",command=AddUrl).pack(side="left")
+tk.Button(SpiderConf,text="- Delete",command=DelUrl).pack(side="left")
 
 '''Stopwords Editing'''
 def stopword():
     swSetForm = tk.Toplevel()
     swSetForm.geometry("320x256")
     swSetForm.resizable(0,0)
-    swSetForm.title("Stopwords Settings")
+    swSetForm.title("Stop Words")
 
     StoplistPart = tk.Frame(swSetForm)
     '''Stopwords List'''
@@ -361,7 +362,7 @@ def stopword():
         InputWindow.geometry("256x96")
         InputWindow.resizable(0,0)
 
-        tk.Label(InputWindow,text="Input Stop Word").pack(side="top")
+        tk.Label(InputWindow,text="Enter Stop Word").pack(side="top")
         def Save():
                 global StopWords
                 '''Add Into Current Stopwords List'''
@@ -382,13 +383,19 @@ def stopword():
         del(StopWords[a])
         Stoplist.delete(0)
         _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Updated StopWords Lists"))
-    tk.Button(swSetForm,text="➕Add",command=Add).pack(side="left")
-    tk.Button(swSetForm,text="➖Delete",command=Del).pack(side="left")
+    tk.Button(swSetForm,text="+ Add",command=Add).pack(side="left")
+    tk.Button(swSetForm,text="- Delete",command=Del).pack(side="left")
     swSetForm.mainloop()
 
 
+tk.Checkbutton(
+    MainWin,
+    text="Start automatically when entering the desktop",
+    variable=AutoStart,
+).pack(ipadx="2",side="top")
 
-tk.Button(SpiderConf,text="🚫Stopwords Settings",command=stopword).pack(side="left")
+
+tk.Button(SpiderConf,text="Stop Words",command=stopword).pack(side="left")
 SpiderConf.pack(ipadx="2",side="top")
 
 '''Setting GUI Auto Refresh And Save'''
@@ -405,6 +412,9 @@ def ApplyRefresh(threadname,delay):
             ChooseColor.pack_forget()
             ColorMoniter.pack_forget()
         time.sleep(delay)
+'''Auto Start Checkbox'''
+
+
 _thread.start_new_thread( ApplyRefresh, ("Thread-0", 0.1))
 def save():
     profile = json.dumps({
@@ -424,7 +434,8 @@ def save():
             "AutoRefreshInterval":int(AutoRefresh.get())
         },
         "Spiders":Spider,
-        "StopWords":StopWords
+        "StopWords":StopWords,
+        "AutoStart":bool(AutoStart.get())
     })
     print(profile)
     try:

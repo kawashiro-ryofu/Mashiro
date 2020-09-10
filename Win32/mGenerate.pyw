@@ -21,7 +21,7 @@ import re
 import sun
 from mSet import SETTINGS,errexec
 import sys
-import subprocess
+import _thread
 
 # Bind The SIGINT signal
 def sigoff(signum,frame):
@@ -92,35 +92,61 @@ def spiders(url:list,StopWords:list):
 
     return text
 
+def mSettingsGUI():
+    os.popen(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw')
+
+def AutoStartConf(threadname:str,ProfileConfigure:bool):
+    try:
+        if(ProfileConfigure == True):
+            # Set auto-start item in the registry
+            Key = win32api.RegOpenKeyEx(
+                win32con.HKEY_CURRENT_USER,
+                "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                0,
+                win32con.KEY_SET_VALUE)
+
+            win32api.RegSetValueEx(
+                Key,
+                "TopixPop",
+                0,
+                win32con.REG_SZ,
+                os.path.split(
+                    os.path.realpath(__file__)
+                )[0]+'\\'+os.path.split(os.path.realpath(__file__))[1])
+        else:
+            Key = win32api.RegOpenKeyEx(
+                win32con.HKEY_CURRENT_USER,
+                "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                0,
+                win32con.KEY_SET_VALUE)
+
+            win32api.RegSetValueEx(
+                Key,
+                "TopixPop",
+                0,
+                win32con.REG_SZ,
+                ""
+            )
+    except:
+        #errexec("Failed To Edit Registry",0)
+        errexec(traceback.format_exc(),0)
+
 def main():
-    # Set auto-start item in the registry
-    Key = win32api.RegOpenKeyEx(
-        win32con.HKEY_CURRENT_USER,
-        "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-        0,
-        win32con.KEY_SET_VALUE)
-
-    win32api.RegSetValueEx(
-        Key,
-        "Mashiro",
-        0,
-        win32con.REG_SZ,
-        os.path.split(
-            os.path.realpath(__file__)
-        )[0]+'\\'+os.path.split(os.path.realpath(__file__))[1])
-
+    
     #The Mainloop (Sure?
     while 1:
         #Load User's Configuration
         try:
             setting = SETTINGS()
+            print(setting.AutoStart)
+            _thread.start_new_thread( AutoStartConf, ("AutoStartConfiguration", setting.AutoStart) )
         except:
             errexec("Failed To Read Settings Profile",0)
             try:
                 open(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw',"rb")
             except FileNotFoundError:
                 errexec("The component is missing, please reinstall this product.",1)
-            os.popen(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw')
+            mSettingsGUI()
             wait=True
             while(wait):
                 try:
@@ -154,8 +180,9 @@ def main():
             # Daylight Background Color
             if(
                 (setting.Color[0] == 1) and
-                (now.tm_hour >= SUN[0]) and
-                (now.tm_min >= SUN[1])):
+                (now.tm_hour >= SUN[0]) and (now.tm_min >= SUN[1]) and
+                (now.tm_hour < SUN[2]) and (now.tm_min < SUN[3])
+                ):
                 # Generate Wordcolud
                 # During the day
                 front = wc.WordCloud(
@@ -169,9 +196,8 @@ def main():
                 front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
 
             elif(
-                (setting.Color[0] == 1)and
-                ((now.tm_hour>=SUN[2] and now.tm_min>=SUN[3]) or
-                (setting.Color[0] == 1)and(now.tm_hour < SUN[0]))
+                (setting.Color[0] == 1) and
+                (now.tm_hour >= SUN[2]) and (now.tm_min >= SUN[3])
                 ):
                 # Generate Wordcolud
                 # In night
@@ -207,7 +233,7 @@ def main():
                 height = setting.Resolution[1],
                 margin = setting.Margin
                 ).generate(words)
-
+            mSettingsGUI()
             front.to_file(os.path.expanduser('~')+"\\.Mashiro\\o.jpg")
         except OSError:
             errexec("Can not open resource\nPlease have a check in Your Settings",0)
