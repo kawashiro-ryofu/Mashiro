@@ -1,6 +1,6 @@
-# Mashiro Win32
+# TopixPop Win32
 
-A Mashiro Version For Windows Platform
+A TopixPop Version For Windows Platform
 
 # DEV5 New Features:
 
@@ -14,7 +14,7 @@ A Mashiro Version For Windows Platform
 
 1. Install Python >= 3.7,including pip
 
-2. Run Command(Win + R,type CMD) ,change current directory to "Mashiro/Win32",and type "pip install -r requirements.txt" in the console
+2. Run Command(Win + R,type CMD) ,change current directory to "TopixPop/Win32",and type "pip install -r requirements.txt" in the console
 
 3. Run(double click) "mGenerate.pyw"
 
@@ -22,7 +22,7 @@ A Mashiro Version For Windows Platform
 
 1. Install Python == 3.8(MUST BE Python 3.8.X),including pip
 
-2. Run Command(Win + R,type CMD) ,change current directory to "Mashiro/Win32"
+2. Run Command(Win + R,type CMD) ,change current directory to "TopixPop/Win32"
 
 3. If Your Python is AMD64 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl``` in the console.If Your Python is i386 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl```
 
@@ -32,17 +32,13 @@ A Mashiro Version For Windows Platform
 
 # Known Bugs
 
-1. ~~Unable To Edit Spider URL Lists and Stopwords in GUI Settings~~
-
-2. No emoji Support for Windows 7 Platform
-
-3. Problem with Non-ASCII character coding in profile.
+1. Errors Deleting Stop Word List Elements
 
 # Todo
 
-1. ~~Make a Win32 installer~~(Cancled)
+1. Make a Win32 installer
 
-2. Add Sys Tray Icon
+2. ~~Add Sys Tray Icon~~(Done)
 
 3. Wordcloud Mask
 

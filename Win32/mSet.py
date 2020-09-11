@@ -42,6 +42,7 @@ class SETTINGS:
     # Position[0]:Enable
     # Position[1]:latitude  | [0][0] Degrees | [0][1] Cents
     # Position[2]:longitude | [1][0] Degrees | [1][1] Cents
+    AutoStart:bool
 
     def __init__(self):
 
@@ -66,6 +67,7 @@ class SETTINGS:
         self.Position[0] = profile["Settings"]["BG-Color"]["Position"]["Enable"]
         self.Position[1] = profile["Settings"]["BG-Color"]["Position"]["Latitude"]
         self.Position[2] = profile["Settings"]["BG-Color"]["Position"]["Longitude"]
+        self.AutoStart = profile["AutoStart"]
 
         if(len(self.Position) != 3):
             raise(IOError)

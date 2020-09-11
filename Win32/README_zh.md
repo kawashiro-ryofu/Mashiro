@@ -1,6 +1,6 @@
-# Mashiro Win32
+# TopixPop Win32
 
-Windows平台~~量身定做~~的Mashiro版本
+Windows平台~~量身定做~~的TopixPop版本
 
 # DEV5：
 
@@ -14,7 +14,7 @@ Windows平台~~量身定做~~的Mashiro版本
 
 1. 安装Python> = 3.7，包括pip
 
-2. 运行Command（Win + R，键入CMD），进入目录" Mashiro / Win32"，然后在控制台中输入 `pip install -r requirements.txt`
+2. 运行Command（Win + R，键入CMD），进入目录" TopixPop / Win32"，然后在控制台中输入 `pip install -r requirements.txt`
 
 3. 运行（双击）"mGenerate.pyw"
 
@@ -22,7 +22,7 @@ Windows平台~~量身定做~~的Mashiro版本
 
 1. 安装Python == 3.8（必须为Python 3.8.X），包括pip
 
-2. 运行命令（Win + R，键入CMD），将当前目录更改为“ Mashiro / Win32”
+2. 运行命令（Win + R，键入CMD），将当前目录更改为“ TopixPop / Win32”
 
 3. 如果您的Python是AMD64版本，请在控制台中键入`pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl`。如果您的PythoSn是i386版本，请键入`pip install wordcloud- 1.7.0-cp38-cp38-win_amd64.whl`
 
@@ -32,16 +32,12 @@ Windows平台~~量身定做~~的Mashiro版本
 
 # 已知的Bug
 
-1. ~~无法修改爬虫(Spider)列表和屏蔽词(Stopwords)列表~~
-
-2. 在Windows 7下没有对Emoji的支持
-
-3. 配置文件中非ASCII字符编码问题
+1. 删除停用词列表元素的错误
 
 # To-do
 
-1. ~~制作一个Win32安装程序~~(废除)
+1. 制作一个Win32安装程序
 
-2. 系统托盘图标
+2. ~~系统托盘图标~~（完成）
 
 3. Wordcloud蒙版
