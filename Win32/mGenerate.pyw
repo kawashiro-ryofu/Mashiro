@@ -233,7 +233,7 @@ def main():
             except:
                 pass
             else:
-            wait=False
+                wait=False
 
     _thread.start_new_thread( AutoStartConf, ("AutoStartConfiguration", setting.AutoStart) )
     _thread.start_new_thread( sysTrayIcon, () )
@@ -241,7 +241,7 @@ def main():
     while 1:
         #Load User's Configuration
 
-        print("Autostart: " + setting.AutoStart)          
+        print("Autostart: " + str(setting.AutoStart))
 
         global words
         #Craw Words From the Web
@@ -267,7 +267,7 @@ def main():
             if(
                 (setting.Color[0] == 1) and
                 (now.tm_hour >= SUN[0]) and (now.tm_min >= SUN[1]) and
-                (now.tm_hour < SUN[2]) and (now.tm_min < SUN[3])
+                (now.tm_hour < SUN[2])
                 ):
                 # Generate Wordcolud
                 # During the day

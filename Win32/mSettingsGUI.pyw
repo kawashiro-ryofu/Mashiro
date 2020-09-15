@@ -341,7 +341,7 @@ def DelUrl():
     a = URLlist.curselection()[0]
     del(Spider[a])
     _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Delete URL success"))
-    URLlist.delete(0)
+    URLlist.delete(a)
 
 tk.Button(SpiderConf,text="+ Add",command=AddUrl).pack(side="left")
 tk.Button(SpiderConf,text="- Delete",command=DelUrl).pack(side="left")
@@ -408,7 +408,7 @@ def stopword():
         '''Select Current Selection and Remove It'''
         a = Stoplist.curselection()[0]
         del(StopWords[a])
-        Stoplist.delete(0)
+        Stoplist.delete(a)
         _thread.start_new_thread( TitleEffact, ("TitleEffact", 0,"Updated StopWords Lists"))
     tk.Button(swSetForm,text="+ Add",command=Add).pack(side="left")
     tk.Button(swSetForm,text="- Delete",command=Del).pack(side="left")
