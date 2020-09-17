@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # TopixPop Win32
 
 A TopixPop Version For Windows Platform
@@ -43,55 +42,6 @@ A TopixPop Version For Windows Platform
 
 3. Wordcloud Mask
 
-*Forgive Me. My English Is Suck.
-=======
-# Mashiro Win32
-
-A Mashiro Version For Windows Platform
-
-# BETA 
-
-1. Fixed A Few Problems;
-
-2. Add Scopebar Icon(Still Developing)
-
-# How To Deploy?
-
-## Windows 10
-
-1. Install Python >= 3.7,including pip
-
-2. Run Command(Win + R,type CMD) ,change current directory to "Mashiro/Win32",and type "pip install -r requirements.txt" in the console
-
-3. Run(double click) "mGenerate.pyw"
-
-## Windows NT 6 (Windows 7,Windows 8.1)
-
-1. Install Python == 3.8(MUST BE Python 3.8.X),including pip
-
-2. Run Command(Win + R,type CMD) ,change current directory to "Mashiro/Win32"
-
-3. If Your Python is AMD64 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl``` in the console.If Your Python is i386 version,type ```pip install wordcloud-1.7.0-cp38-cp38-win_amd64.whl```
-
-4. Install Requirements.Type "pip install -r requirements.txt" in the console
-
-5. Run(double click) "mGenerate.pyw"
-
-# Known Bugs
-
-1. ~~Unable To Edit Spider URL Lists and Stopwords in GUI Settings~~ (fixed)
-
-2. ~~No emoji Support for Windows 7 Platform~~ (fixed)
-
-3. ~~Problem with Non-ASCII character coding in profile.~~ (fixed)
-
-# Todo
-
-1. ~~Make a Win32 installer~~(Cancled)
-
-2. Add Sys Tray Icon
-
-3. Wordcloud Mask
+4. Enable to refresh and restore to origin background
 
 *Forgive Me. My English Is Suck.
->>>>>>> 24f3721b2b49b44f4ebb702ae877e230200db43a

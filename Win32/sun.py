@@ -1,18 +1,16 @@
 #
 #
 #   Sunrise And Sunset Calculator
-#   (C)Copyright 2020 Team-RYOUN
+#   (C)Copyright 2020 RYOUN
 # 
-
-'''
-   MIT Licence:
-   Copyright © 2020 Team-RYOUN
-
-   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-'''
+#   MIT Licence:
+#   Copyright © 2020 RYOUN
+#
+#   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+#   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+#   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+#
 import math
 
 PI = 3.141592653589793
@@ -163,26 +161,6 @@ def output(rise:float,Set:float,glong:float):
         )
     
 
-'''
-
-def calc(year:int,month:int,date:int,latitude:list,longitude:list):
-    
-    UTo:float = 180.0
-    glat=latitude[0]+latitude[1]/60+latitude[2]/3600
-    glong=longitude[0]+longitude[1]/60+longitude[2]/3600  
-    TC = t_century(days(year,month,date),UTo)
-    GS = G_sun(TC)
-    LS = L_sun(TC)
-    Gha = GHA(UTo,GS,ecliptic_longitude(LS,GS))
-    E = e(h,glat,sun_deviation(earth_tilt(TC),ecliptic_longitude(LS,GS)))
-    
-    UT = UT_rise(UTo,Gha,glong,E)
-    Rise:float=result_rise(UT_rise(UTo,Gha,glong,E),UTo,glong,glat,year,month,date)
-
-    UT = UT_set(UTo,Gha,glong,E)
-    Set:float=result_set(UT,UTo,glong,glat,year,month,date); 
-    return output(Rise,Set,glong)
-'''
 
 def calc(year:int,month:int,date:int,LAT:list,LON:list):
     
