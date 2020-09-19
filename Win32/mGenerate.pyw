@@ -80,8 +80,8 @@ def spiders(url:list,StopWords:list):
     try:
         for c in range(len(url)):
             #Craw paragraph elements
-            out = etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
-            out += etree.HTML(requests.get(url[c]).text).xpath("//h1/text()")
+            out = etree.HTML(requests.get(url[c]).text).xpath("//h1/text()")
+            out += etree.HTML(requests.get(url[c]).text).xpath("//p/text()")
             for d in range(len(out)):
                 #If the Stopwords function is enabled
                 if(len(StopWords) != 0):
@@ -216,32 +216,32 @@ def about():
     About.mainloop()
 
 def main():
-    setting = SETTINGS()
+    try:
+        setting = SETTINGS()
+    except:
+        errexec("Failed To Read Settings Profile",0)
+        try:
+            open(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw',"rb")
+        except FileNotFoundError:
+            errexec("The component is missing, please reinstall this product.",1)
+        mSettingsGUI()
+        wait=True
+        while(wait):
+            try:
+                setting = SETTINGS()
+                print("Waiting")
+            except:
+                pass
+            else:
+            wait=False
+
     _thread.start_new_thread( AutoStartConf, ("AutoStartConfiguration", setting.AutoStart) )
     _thread.start_new_thread( sysTrayIcon, () )
     #The Mainloop (Sure?
     while 1:
         #Load User's Configuration
-        try:
-            setting = SETTINGS()
-            print(setting.AutoStart)
-            
-        except:
-            errexec("Failed To Read Settings Profile",0)
-            try:
-                open(os.path.split(os.path.realpath(__file__))[0]+'\\mSettingsGUI.pyw',"rb")
-            except FileNotFoundError:
-                errexec("The component is missing, please reinstall this product.",1)
-            mSettingsGUI()
-            wait=True
-            while(wait):
-                try:
-                    setting = SETTINGS()
-                    print("Waiting")
-                except:
-                    pass
-                else:
-                    wait=False
+
+        print("Autostart: " + setting.AutoStart)          
 
         global words
         #Craw Words From the Web
