@@ -3,7 +3,7 @@
 #   ToixPop (Win32 ver.)
 #   Version:    BETA 1
 #
-#   (C)Copyright 2020 RYOUN
+#   Copyright © 2020 RYOUN
 #
 #   mGenerate.pyw: WordCloud Background Maker
 #
