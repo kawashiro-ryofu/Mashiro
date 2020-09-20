@@ -3,7 +3,7 @@
 #   TopixPop (Win32 ver.)
 #   Version:    BETA 1
 #
-#   (C)Copyright 2020 RYOUN
+#   Copyright © 2020 RYOUN
 #
 #   mSet.py: mGenerate Needed Functions and Classes
 #
