@@ -204,7 +204,7 @@ def about():
     ).pack(side="bottom")
     tk.Label(
         About,
-        text="©Copyright RYOUN 2020",
+        text="Copyright © 2020 RYOUN, Some Rights Reserved",
         font=("Arial",12)
     ).pack(side="bottom")
 
