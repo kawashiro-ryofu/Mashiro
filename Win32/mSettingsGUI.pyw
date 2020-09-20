@@ -3,7 +3,7 @@
 #   TopixPop (Win32)
 #   Version:  BETA 1
 #
-#   (C)Copyright 2020 RYOUN
+#   Copyright © 2020 RYOUN
 #
 #   mSettingGUI.py: Settings(GUI)
 #
