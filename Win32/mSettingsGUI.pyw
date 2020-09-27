@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 #   TopixPop (Win32)
-#   Version:  BETA 1
+#   Version:  BETA 2
 #
 #   Copyright © 2020 RYOUN
 #
