@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 #   ToixPop (Win32 ver.)
-#   Version:    BETA 1
+#   Version:    BETA 2
 #
 #   Copyright © 2020 RYOUN
 #
