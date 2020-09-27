@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 #
 #   ToixPop (Win32 ver.)
-#   Version:    BETA 1
+#   Version:    BETA 2
 #
 #   Copyright © 2020 RYOUN
 #
 #   mGenerate.pyw: WordCloud Background Maker
 #
+
+__version__ = "BETA 2"
 
 import wordcloud as wc
 import matplotlib.pyplot as plt
@@ -167,6 +169,8 @@ def sysTrayIcon():
     icon.run()
 
 def about():
+    global __version__
+
     '''About Page'''
     About = tk.Tk()    
     About.title("About TopixPop")
@@ -193,7 +197,7 @@ def about():
     
     tk.Label(
         About,
-        text="Version:BETA 1\n\nAuthors:\n Jeffery Yu (非科学のカッパ)\n Eilles Wan (WYI)\n\n",
+        text="Version:" + __version__ + "\n\nAuthors:\n Jeffery Yu (非科学のカッパ)\n Eilles Wan (WYI)\n\n",
         font=("Arial",12),
     ).pack()
 
@@ -240,7 +244,7 @@ def main():
     #The Mainloop (Sure?
     while 1:
         #Load User's Configuration
-
+        setting = SETTINGS()
         print("Autostart: " + str(setting.AutoStart))
 
         global words
@@ -256,7 +260,9 @@ def main():
                 now.tm_mday,
                 setting.Position[1],
                 setting.Position[2])
+            print("SUNDAT: ",end="")
             print(SUN)
+            print("NOWSTAT: ",end="")
         except:
             # ERROR OUTPUT
             errexec(traceback.format_exc(),0)
@@ -266,11 +272,12 @@ def main():
             # Daylight Background Color
             if(
                 (setting.Color[0] == 1) and
-                (now.tm_hour >= SUN[0]) and (now.tm_min >= SUN[1]) and
-                (now.tm_hour < SUN[2])
+                now.tm_hour * 60 + now.tm_min >= SUN[0] * 60 + SUN[1]
+
                 ):
                 # Generate Wordcolud
                 # During the day
+                print("DAY")
                 front = wc.WordCloud(
                     background_color="white",
                     font_path=setting.Font,
@@ -283,10 +290,11 @@ def main():
 
             elif(
                 (setting.Color[0] == 1) and
-                (now.tm_hour >= SUN[2]) and (now.tm_min >= SUN[3])
+                now.tm_hour * 60 + now.tm_min < SUN[0] * 60 + SUN[1]
                 ):
                 # Generate Wordcolud
                 # In night
+                print("NIGHT")
                 front = wc.WordCloud(
                     background_color="black",
                     font_path=setting.Font,
@@ -298,6 +306,7 @@ def main():
             else:
                 # Daylight Disabled
                 # Generate Wordcolud
+                print("DISABLED")
                 front = wc.WordCloud(
                     background_color=setting.Color[1],
                     font_path=setting.Font,

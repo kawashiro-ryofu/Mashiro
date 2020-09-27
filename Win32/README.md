@@ -2,11 +2,9 @@
 
 A TopixPop Version For Windows Platform
 
-# DEV5 New Features:
+# BETA2 
 
-1. Change the wallpaper background-color according to the sunrise and sunset  time of the current location
-
-2. Automatic set the wallpaper resolution
+Mainly Fixed tons of known bugs
 
 # How To Deploy?
 
@@ -29,10 +27,6 @@ A TopixPop Version For Windows Platform
 4. Install Requirements.Type "pip install -r requirements.txt" in the console
 
 5. Run(double click) "mGenerate.pyw"
-
-# Known Bugs
-
-1. Errors Deleting Stop Word List Elements
 
 # Todo
 
