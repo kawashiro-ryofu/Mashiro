@@ -12,7 +12,7 @@ import win32api,os,win32con,traceback,json
 
 # Error Output
 def errexec(returnInfo:str,Exit:bool):
-    #tkm.showerror("Error",returnInfo)
+    print("ERR:" + returnInfo)
     win32api.MessageBox(0,returnInfo,"OOPS!",win32con.MB_ICONERROR)
     if(Exit == True):
         exit()

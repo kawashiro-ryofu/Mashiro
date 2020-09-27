@@ -2,13 +2,12 @@
 
 Windows平台~~量身定做~~的TopixPop版本
 
-# DEV5：
+# BETA2
 
-1. 根据当前位置的日出和日落时间更改墙纸的背景颜色
-
-2. 自动设置壁纸分辨率
+修复已知错误
 
 # 部署
+
 
 ## Windows 10
 
@@ -29,10 +28,6 @@ Windows平台~~量身定做~~的TopixPop版本
 4.安装需求。在控制台中输入“ pip install -r requirements.txt”
 
 3.运行（双击）"mGenerate.pyw"
-
-# 已知的Bug
-
-1. 删除停用词列表元素的错误
 
 # To-do
 
