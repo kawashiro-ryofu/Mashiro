@@ -2,9 +2,13 @@
 
 A TopixPop Version For Windows Platform
 
-# BETA2 
+# BETA2 20201115
 
-Mainly Fixed tons of known bugs
+Tweaks:
+
+1. Be able to refresh manually;
+
+2. Restore Wallpaper Before Exit.
 
 # How To Deploy?
 
@@ -28,6 +32,10 @@ Mainly Fixed tons of known bugs
 
 5. Run(double click) "mGenerate.pyw"
 
+# Bug List
+
+1. Unable to restore Position.
+
 # Todo
 
 1. Make a Win32 installer
@@ -36,6 +44,6 @@ Mainly Fixed tons of known bugs
 
 3. Wordcloud Mask
 
-4. Enable to refresh and restore to origin background
+4. ~~Enable to refresh and restore to origin background~~(Done)
 
 *Forgive Me. My English Is Suck.

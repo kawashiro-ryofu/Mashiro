@@ -243,7 +243,7 @@ try:
     ColorConf.pack(ipadx="2",side="top")
 
     # There are tons of problems to be solve.
-    # In Three Words, We Need Help
+    # In One Word, We Need Help
     #
     # Current Default font:
     #    English(en_US en_AU en): Lucida Sana(C:\\Windows\\Fonts\\l_10646.ttf)
