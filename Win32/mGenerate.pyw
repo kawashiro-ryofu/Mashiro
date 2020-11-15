@@ -295,9 +295,7 @@ def main():
 
     _thread.start_new_thread( 
         AutoStartConf,
-        (
-            setting.AutoStart
-        )
+        tuple([setting.AutoStart])
     )
     _thread.start_new_thread( 
         sysTrayIcon, 
